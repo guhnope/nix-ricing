@@ -5,6 +5,7 @@ local mod = "SUPER"
 local terminal = "ghostty"
 local fileManager = "nemo"
 local idlehandler = "hypridle"
+local browser = "brave"
 
 ----------------------------------------------------------------
 -- Monitor
@@ -136,10 +137,10 @@ hl.bind("SUPER + E", hl.dsp.exec_cmd(fileManager))
 hl.bind("SUPER + SPACE", hl.dsp.exec_cmd("wofi --show drun"))
 hl.bind("SUPER + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind("SUPER + X", hl.dsp.exec_cmd("wlogout --buttons-per-row 4"))
--- UI Controls
-hl.bind("SUPER + S", hl.dsp.exec_cmd("wayle panel settings"))
-hl.bind("SUPER + comma", hl.dsp.exec_cmd("wayle panel settings"))
 hl.bind("SUPER + SHIFT + M", hl.dsp.exec_cmd('loginctl terminate-user ""'))
+hl.bind("SUPER + B", hl.dsp.exec_cmd(browser))
+hl.bind("SUPER + G", hl.dsp.exec_cmd("steam"))
+hl.bind("SUPER + S", hl.dsp.exec_cmd("spotify"))
 
 -- Native Hardware Audio Controls
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+"), { repeating = true, locked = true })
