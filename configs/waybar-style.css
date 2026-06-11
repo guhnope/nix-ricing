@@ -1,7 +1,3 @@
-/* =============================================================================
- * Gruvbox Dark Waybar Stylesheet
- * ============================================================================= */
-
 /* Reset all styles and set default font */
 * {
     border: none;
@@ -113,6 +109,34 @@ window#waybar {
 /* Urgent notification indicator */
 #workspaces button.urgent {
     color: #fb4934; /* Gruvbox red */
+}
+
+/* 1. Style the containers normally when they have workspace content */
+#workspaces.hyprland,
+#workspaces.niri {
+    background-color: #343f44; /* everforest bg0 */
+    margin: 4px 4px;
+    padding: 0px 8px;
+    border: 1px solid #475258;
+    border-radius: 8px;
+}
+
+/* 🌟 2. THE FIX: If a workspace container is empty, completely hide it from the bar */
+#workspaces:empty,
+#workspaces.hyprland:empty,
+#workspaces.niri:empty {
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* (Keep your individual workspace dot/button styling exactly the same below) */
+#workspaces button {
+    padding: 0px 8px;
+    color: #859289;
+    background-color: transparent;
+    font-size: 12px;
 }
 
 /* =============================================================================

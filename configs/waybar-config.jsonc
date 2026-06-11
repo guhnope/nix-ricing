@@ -103,13 +103,11 @@
       "8": "8",
       "9": "9",
       "10": "0",
-      // Niri uses "focused" instead of "active" to pinpoint your current view
       "focused": "󱓻",
     },
   },
 
   // 🪟 Hyprland Active Window (Ignored in Niri)
-
   "hyprland/window": {
     "format": " 󰖲 {title} ",
     "separate-outputs": true,
@@ -123,6 +121,27 @@
     "format": " 󰘔 {title} ",
     "separate-outputs": true,
     "max-length": 40,
+  },
+
+  // 📋 Clipboard Manager (Requires cliphist & rofi/wofi)
+  "custom/cliphist": {
+    "format": "󰨚 ",
+    "tooltip": false,
+    "on-click": "cliphist list | wofi --dmenu | cliphist decode | wl-copy",
+  },
+
+  // 🖼️ Wallpaper Switcher (Requires swww or hyprpaper)
+  "custom/wallpaper": {
+    "format": "󰸉 ",
+    "tooltip": false,
+    "on-click": "swww img $(find ~/Pictures/Wallpapers/ -type f | shuf -n 1) --transition-type simple",
+  },
+
+  // 🔔 Notifications (Requires mako or dunst)
+  "custom/notification": {
+    "format": "󰂚 ",
+    "tooltip": false,
+    "on-click": "makoctl dismiss",
   },
 
   // 📸 Custom Screenshot Module

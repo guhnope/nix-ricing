@@ -22,7 +22,7 @@
       modules = [
         home-manager.nixosModules.home-manager
         ./modules/limine.nix
-        ./hardware-configuration.nix
+        /etc/nixos/hardware-configuration.nix
         ./configuration.nix
         ./regreet/gruvbox.nix
         ./apps.nix
