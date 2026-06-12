@@ -10,26 +10,19 @@
   "modules-right": [
     "tray",
     "clock",
+    "custom/wallpaper",
     "custom/screenshot",
+    "custom/notification",
     "pulseaudio",
     "network",
     "custom/power",
   ],
 
-  // 🚀 Custom Wofi Launcher Module
+  // 🚀 Custom Launcher Module
   "custom/launcher": {
     "format": " ", // NixOS / Nerd Font icon
-    "on-click": "wofi",
+    "on-click": "walker",
     "tooltip": false,
-  },
-
-  // 🪟 Agnostic Window Taskbar (Works on Qtile, Hyprland, etc.)
-  "wlr/taskbar": {
-    "format": "{icon}",
-    "icon-size": 18,
-    "tooltip-format": "{title}",
-    "on-click": "activate",
-    "on-click-middle": "close",
   },
 
   // ⏱️ Clock Settings
@@ -63,48 +56,24 @@
   },
   // 🪟 Hyprland Workspaces
   "hyprland/workspaces": {
+    "format": "{name}",
     "on-click": "activate",
-    "format": "{icon}",
-    "format-icons": {
-      "default": "",
-      "1": "1",
-      "2": "2",
-      "3": "3",
-      "4": "4",
-      "5": "5",
-      "6": "6",
-      "7": "7",
-      "8": "8",
-      "9": "9",
-      "10": "0",
-      "active": "󱓻",
-    },
-    "persistent-workspaces": {
-      "1": [],
-      "2": [],
-      "3": [],
-      "4": [],
-      "5": [],
-    },
+    // 🚀 CRITICAL: Make sure this is either false or completely deleted
+    "all-outputs": false,
+    // Ensure you aren't hardcoding persistent empty slots like [1, 2, 3, 4] here
+    "persistent-workspaces": {},
   },
 
-  // 🌌 Niri Workspaces (Ignored in Hyprland)
+  // 🎞️ Niri Scrollable Workspaces
   "niri/workspaces": {
     "format": "{icon}",
+    "on-click": "activate",
     "format-icons": {
       "default": "",
-      "1": "1",
-      "2": "2",
-      "3": "3",
-      "4": "4",
-      "5": "5",
-      "6": "6",
-      "7": "7",
-      "8": "8",
-      "9": "9",
-      "10": "0",
-      "focused": "󱓻",
+      "active": "󱓻",
     },
+    // 🚀 Leaving "persistent-workspaces" out entirely forces Niri
+    // to dynamically cull empty workspaces from your bar!
   },
 
   // 🪟 Hyprland Active Window (Ignored in Niri)
@@ -123,33 +92,33 @@
     "max-length": 40,
   },
 
-  // 📋 Clipboard Manager (Requires cliphist & rofi/wofi)
+  // Clipboard Manager (Requires cliphist & rofi/wofi)
   "custom/cliphist": {
-    "format": "󰨚 ",
+    "format": "📋 ",
     "tooltip": false,
     "on-click": "cliphist list | wofi --dmenu | cliphist decode | wl-copy",
   },
 
-  // 🖼️ Wallpaper Switcher (Requires swww or hyprpaper)
+  // 🖼️ Wallpaper Switcher
   "custom/wallpaper": {
-    "format": "󰸉 ",
+    "format": "🖼️",
     "tooltip": false,
-    "on-click": "swww img $(find ~/Pictures/Wallpapers/ -type f | shuf -n 1) --transition-type simple",
+    "on-click": "wpaperctl next",
   },
 
   // 🔔 Notifications (Requires mako or dunst)
   "custom/notification": {
-    "format": "󰂚 ",
+    "format": "🔔 ",
     "tooltip": false,
     "on-click": "makoctl dismiss",
   },
 
   // 📸 Custom Screenshot Module
   "custom/screenshot": {
-    "format": "󰹑 ",
+    "format": " 📸",
     "tooltip": false,
-    "on-click": "grimblast copysave area", // Drags a region to copy & save
-    "on-click-right": "grimblast copysave screen", // Right-click captures whole screen
+    "on-click": "grimshot savecopy area", // Drags a region to copy & save
+    "on-click-right": "grimshot savecopy screen", // Right-click captures whole screen
   },
   "custom/power": {
     "format": "⏻  ",

@@ -8,11 +8,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, ... }: {
@@ -28,7 +23,6 @@
         ./apps.nix
         ./modules/niri.nix
         ./modules/hyprland.nix
-        ./modules/waybar.nix
       ];
     };
   };

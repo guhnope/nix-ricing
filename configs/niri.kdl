@@ -54,9 +54,8 @@ window-rule {
 // ----------------------------------------------------------------
 binds {
     // Shell UI Elements
-    Mod+Space          { spawn "wofi" "--show" "drun"; }
-    Mod+I              { spawn "wofi" "--show" "drun"; }
-    Mod+L              { spawn "hyprlock"; }
+    Mod+Space          { spawn "walker"; }
+    Mod+L              { spawn "gtklock"; }
     Mod+X              { spawn "wlogout" "--buttons-per-row" "4"; }
     Mod+Y              { spawn "wpaperd"; }
 
@@ -130,6 +129,7 @@ binds {
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "DISPLAY" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
 // Start the applications
 spawn-at-startup "wpaperd" "-d"
+spawn-at-startup "elephant"
 spawn-at-startup "hypridle"
 spawn-at-startup "hyprpolkitagent"
 config-notification { disable-failed; }

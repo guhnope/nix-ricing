@@ -121,16 +121,6 @@ window#waybar {
     border-radius: 8px;
 }
 
-/* 🌟 2. THE FIX: If a workspace container is empty, completely hide it from the bar */
-#workspaces:empty,
-#workspaces.hyprland:empty,
-#workspaces.niri:empty {
-    background-color: transparent;
-    border: none;
-    margin: 0;
-    padding: 0;
-}
-
 /* (Keep your individual workspace dot/button styling exactly the same below) */
 #workspaces button {
     padding: 0px 8px;

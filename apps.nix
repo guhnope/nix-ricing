@@ -5,7 +5,6 @@
     enable = true;
     extraCompatPackages = with pkgs; [
       proton-ge-bin
-      mangohud
     ];
   };
 
@@ -35,15 +34,13 @@
     discord
     signal-desktop
     zed-editor
-    qt6Packages.qt6ct
-    nwg-look
-    adw-gtk3
-    catppuccin-gtk
-    gruvbox-gtk-theme
-    everforest-gtk-theme
-    papirus-icon-theme
-    nordic
-
+    wpaperd
+    wlogout
+    matugen
+    grim
+    waybar
+    walker
+    elephant
     (pkgs.lib.hiPrio (pkgs.runCommand "launcher-hider-profile" {} ''
       appsDir=$out/share/applications
       mkdir -p $appsDir
