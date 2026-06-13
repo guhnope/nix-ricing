@@ -23,12 +23,12 @@
         specialArgs = { inherit inputs; };
         modules = [
           home-manager.nixosModules.home-manager
-          ./modules/limine.nix
+          ./limine.nix
           /etc/nixos/hardware-configuration.nix
           ./configuration.nix
           ./regreet/gruvbox.nix
           ./apps.nix
-          ./modules/niri.nix
+          ./niri.nix
           ./hypr/hyprland.nix
         ];
       };

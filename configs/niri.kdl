@@ -33,9 +33,6 @@ hotkey-overlay { skip-at-startup; }
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
-// ----------------------------------------------------------------
-// Window Rules
-// ----------------------------------------------------------------
 window-rule {
     match app-id=r#"^org\.wezfurlong\.wezterm$"#
     default-column-width { proportion 0.5; }
@@ -49,9 +46,6 @@ window-rule {
     clip-to-geometry true
 }
 
-// ----------------------------------------------------------------
-// Keybinds (Wayle / Standard Desktop Shell Mappings)
-// ----------------------------------------------------------------
 binds {
     // Shell UI Elements
     Mod+Space          { spawn "walker"; }
