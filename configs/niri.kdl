@@ -130,6 +130,7 @@ spawn-at-startup "dbus-update-activation-environment" "--systemd" "DISPLAY" "WAY
 // Start the applications
 spawn-at-startup "wpaperd" "-d"
 spawn-at-startup "elephant"
+spawn-at-startup "waybar"
 spawn-at-startup "hypridle"
 spawn-at-startup "hyprpolkitagent"
 config-notification { disable-failed; }

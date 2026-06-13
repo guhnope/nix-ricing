@@ -13,7 +13,10 @@
     slurp
     cliphist
     mako
+    walker
+    elephant
     gtklock
+    wpaperd
     sway-contrib.grimshot
   ];
 }

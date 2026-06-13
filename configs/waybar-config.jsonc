@@ -21,7 +21,7 @@
   // 🚀 Custom Launcher Module
   "custom/launcher": {
     "format": " ", // NixOS / Nerd Font icon
-    "on-click": "walker",
+    "on-click": "fuzzel",
     "tooltip": false,
   },
 
