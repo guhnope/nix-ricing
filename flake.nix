@@ -10,20 +10,27 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }: {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = { inherit inputs; };
-      modules = [
-        home-manager.nixosModules.home-manager
-        ./modules/limine.nix
-        /etc/nixos/hardware-configuration.nix
-        ./configuration.nix
-        ./regreet/gruvbox.nix
-        ./apps.nix
-        ./modules/niri.nix
-        ./modules/hyprland.nix
-      ];
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      home-manager,
+      ...
+    }:
+    {
+      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          home-manager.nixosModules.home-manager
+          ./modules/limine.nix
+          /etc/nixos/hardware-configuration.nix
+          ./configuration.nix
+          ./regreet/gruvbox.nix
+          ./apps.nix
+          ./modules/niri.nix
+          ./hypr/hyprland.nix
+        ];
+      };
     };
-  };
 }

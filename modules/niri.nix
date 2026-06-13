@@ -17,6 +17,7 @@
     elephant
     gtklock
     wpaperd
+    pavucontrol
     sway-contrib.grimshot
   ];
 }

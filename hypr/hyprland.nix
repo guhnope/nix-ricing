@@ -14,14 +14,15 @@
       hyprshot
       hypridle
       hyprnotify
+      hyprsysteminfo
+      hyprpwcenter
       hyprpicker
-      fuzzel # Because bwrap issues on Nix breaks hyprlauncher, noctalia and walkerland
+      hyprtoolkit
+      hyprshutdown
+      hyprlauncher
+      fuzzel # Because bwrap issues on Nix breaks hyprlauncher, noctalia and walker
     ];
     services.hypridle.enable = true;
-    programs.uwsm = {
-      enable = true;
-
-    };
     xdg.portal = {
       enable = true;
       extraPortals = with pkgs; [

@@ -20,19 +20,17 @@ in
   home.stateVersion = "26.05";
   programs.home-manager.enable = true;
 
-  # ----------------------------------------------------------------
-  # 🖥️ DYNAMIC DOTFILE CONFIGURATION MATRIX
-  # ----------------------------------------------------------------
   xdg.configFile = {
     # Any static configurations that don't change based on session go here
     # e.g., "ghostty/config".source = ./configs/ghostty;
   }
   // lib.optionalAttrs (hyprland) {
-    "hypr/hyprland.lua".source = ./configs/hyprland.lua;
-    "hypr/hyprpaper.conf".source = ./configs/hyprpaper.conf;
-    "hypr/hypridle.conf".source = ./configs/hypridle.conf;
-    "hypr/hyprlauncher.conf".source = ./configs/hyprlauncher.conf;
-    "fuzzel/fuzzel.ini".source = ./configs/fuzzel.ini;
+    "hypr/hyprland.lua".source = ./hypr/hyprland.lua;
+    "hypr/hyprpaper.conf".source = ./hypr/hyprpaper.conf;
+    "hypr/hypridle.conf".source = ./hypr/hypridle.conf;
+    "hypr/hyprlauncher.conf".source = ./hypr/hyprlauncher.conf;
+    "fuzzel/fuzzel.ini".source = ./hypr/fuzzel.ini;
+    "hypr/hypr-waybar.jsonc".source = ./hypr/hypr-waybar.jsonc;
   }
   // lib.optionalAttrs (niri) {
     "niri/config.kdl".source = ./configs/niri.kdl;
@@ -42,13 +40,13 @@ in
     "waybar/style.css".source = ./configs/waybar-style.css;
   };
 
-  # ----------------------------------------------------------------
-  # 🤖 HOME MANAGER WAYBAR SERVICE LIFECYCLE
-  # ----------------------------------------------------------------
   programs.waybar = {
     enable = waybar;
   };
-
+  services.cliphist = {
+    enable = true;
+    allowImages = true;
+  };
   # Fine-tune the systemd service so it only spins up after Niri/Hyprland
   # hydrates systemd with your session's active environment variables.
   systemd.user.services.waybar = lib.mkIf waybar {
@@ -64,9 +62,6 @@ in
     };
   };
 
-  # ----------------------------------------------------------------
-  # 🐚 SHELL CONFIGURATION
-  # ----------------------------------------------------------------
   programs.fish = {
     enable = true;
     interactiveShellInit = ''

@@ -25,7 +25,6 @@
     signal-desktop
     zed-editor
     waybar
-    pavucontrol
     vial
     (pkgs.lib.hiPrio (
       pkgs.runCommand "launcher-hider-profile" { } ''
