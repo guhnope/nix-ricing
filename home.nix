@@ -30,7 +30,7 @@ in
     "hypr/hypridle.conf".source = ./hypr/hypridle.conf;
     "hypr/hyprlauncher.conf".source = ./hypr/hyprlauncher.conf;
     "fuzzel/fuzzel.ini".source = ./hypr/fuzzel.ini;
-    "waybar/hypr.jsonc".source = ./hypr/hypr-waybar.jsonc;
+    "waybar/hyprland.jsonc".source = ./hypr/waybar.jsonc;
   }
   // lib.optionalAttrs (niri) {
     "niri/config.kdl".source = ./configs/niri.kdl;

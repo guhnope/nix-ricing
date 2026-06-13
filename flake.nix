@@ -28,6 +28,8 @@
           ./configuration.nix
           ./regreet/gruvbox.nix
           ./apps.nix
+          ./devices.nix
+          ./gaming.nix
           ./niri.nix
           ./hypr/hyprland.nix
         ];

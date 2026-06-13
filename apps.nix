@@ -1,15 +1,6 @@
 { pkgs, ... }:
 
 {
-  programs.steam = {
-    enable = true;
-    extraCompatPackages = with pkgs; [
-      proton-ge-bin
-    ];
-  };
-
-  programs.gamemode.enable = true;
-
   environment.systemPackages = with pkgs; [
     neovim
     ghostty
@@ -38,30 +29,6 @@
         Name=Neovim
         NoDisplay=true
         Exec=nvim %F
-        EOF
-
-        cat <<EOF > $appsDir/hp-uiscan.desktop
-        [Desktop Entry]
-        Type=Application
-        Name=HP Linux Imaging and Printing Scanner
-        NoDisplay=true
-        Exec=hp-uiscan
-        EOF
-
-        cat <<EOF > $appsDir/hplip.desktop
-        [Desktop Entry]
-        Type=Application
-        Name=HPLIP Toolbox
-        NoDisplay=true
-        Exec=hp-toolbox
-        EOF
-
-        cat <<EOF > $appsDir/cups.desktop
-        [Desktop Entry]
-        Type=Application
-        Name=Manage Printing
-        NoDisplay=true
-        Exec=xdg-open http://localhost:631/
         EOF
 
         cat <<EOF > $appsDir/nwg-look.desktop

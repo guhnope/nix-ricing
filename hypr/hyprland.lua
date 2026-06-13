@@ -40,6 +40,8 @@ for key, val in pairs(envs) do
     hl.env(key, val)
 end
 
+local home = os.getenv("HOME")
+local waybar_config = home .. "/.config/waybar/hyprland.jsonc"
 ----------------------------------------------------------------
 -- Config Table Block
 ----------------------------------------------------------------
@@ -216,7 +218,7 @@ hl.bind("SUPER + mouse:273", hl.dsp.window.resize(), { mouse = true })
 ----------------------------------------------------------------
 hl.on("hyprland.start", function()
     hl.exec_cmd("dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
-    hl.exec_cmd("waybar -c hypr.jsonc")
+    hl.exec_cmd("waybar -c " .. waybar_config)
     hl.exec_cmd("hyprpaper")
     hl.exec_cmd("hypridle")
     hl.exec_cmd("hyprlauncher -d")
