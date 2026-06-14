@@ -88,7 +88,6 @@ in
   }
   // lib.optionalAttrs (hyprland) {
     "hypr/hyprland.lua".source = ./hypr/hyprland.lua;
-    "hypr/hyprpaper.conf".source = ./hypr/hyprpaper.conf;
     "hypr/hypridle.conf".source = ./hypr/hypridle.conf;
     "hypr/hyprlauncher.conf".source = ./hypr/hyprlauncher.conf;
     "waybar/hyprland.jsonc".source = ./hypr/waybar.jsonc;

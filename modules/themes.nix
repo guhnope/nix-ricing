@@ -28,7 +28,7 @@ pkgs:
     alt = "7fbbb3";
     warn = "e67e80";
     ghostty = "Everforest Dark Hard";
-    gtkName = "Everforest-Dark-B";
+    gtkName = "Everforest-Dark";
     gtkPkg = pkgs.everforest-gtk-theme;
     iconName = "Papirus-Dark";
     iconPkg = pkgs.papirus-icon-theme;
