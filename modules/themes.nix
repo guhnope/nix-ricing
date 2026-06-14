@@ -30,8 +30,8 @@ pkgs:
     ghostty = "Everforest Dark Hard";
     gtkName = "Everforest-Green-Dark";
     gtkPkg = pkgs.everforest-gtk-theme;
-    iconName = "oomox-Everforest_light";
-    iconPkg = pkgs.papirus-icon-theme;
+    iconName = "Gruvbox-Plus-Light";
+    iconPkg = pkgs.gruvbox-plus-icons;
     cursorName = "Everforest cursors";
     cursorPkg = pkgs.everforest-cursors;
     cursorSize = 24;
