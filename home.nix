@@ -55,15 +55,19 @@ in
 
     "fuzzel/fuzzel.ini".text = ''
       [main]
-      font=JetBrainsMono Nerd Font:size=18
+      font=JetBrainsMono Nerd Font:size=24
       terminal=ghostty
       prompt="❯ "
+      icon-theme=${theme.iconName}
+      [icons]
+      icon-size=64
       icon-theme=${theme.iconName}
       [colors]
       background=${theme.bg}ff
       text=${theme.fg}ff
       selection=${theme.alt}ff
       prompt=${theme.accent}ff
+
     '';
 
     "mpv/mpv.conf".text = ''
@@ -124,10 +128,10 @@ in
           background-size: 100px;
       }
       button:hover { background-color: #${theme.accent}; color: #${theme.bg}; }
-      #lock { background-image: url("${theme.iconPkg}/share/icons/${theme.iconName}/actions/32/system-lock-screen.svg"); }
-      #logout { background-image: url("${theme.iconPkg}/share/icons/${theme.iconName}/actions/32/logout_highlight.svg"); }
-      #shutdown { background-image: url("${theme.iconPkg}/share/icons/${theme.iconName}/actions/32/system-shutdown.svg"); }
-      #reboot { background-image: url("${theme.iconPkg}/share/icons/${theme.iconName}/actions/32/system-reboot.svg"); }
+      #lock { background-image: url("${theme.iconPkg}/share/icons/${theme.iconName}/apps/scalable/system-lock-screen.svg"); }
+      #logout { background-image: url("${theme.iconPkg}/share/icons/${theme.iconName}/apps/scalable/logout_highlight.svg"); }
+      #shutdown { background-image: url("${theme.iconPkg}/share/icons/${theme.iconName}/apps/scalable/system-shutdown.svg"); }
+      #reboot { background-image: url("${theme.iconPkg}/share/icons/${theme.iconName}/apps/scalable/system-reboot.svg"); }
     '';
   };
 
