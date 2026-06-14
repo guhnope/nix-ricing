@@ -1,4 +1,3 @@
-# themes/palettes.nix
 pkgs: {
   tokyonight = {
     bg = "1a1b26";

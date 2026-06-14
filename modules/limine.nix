@@ -1,17 +1,26 @@
-# modules/boot.nix
-{ pkgs, ... }:
+# modules/limine.nix
+{ pkgs, activeTheme, ... }:
 
+let
+  allThemes = import ../modules/themes.nix pkgs;
+  theme = allThemes.${activeTheme};
+in
 {
-  # Bootloader setup
   boot.loader.systemd-boot.enable = false;
   boot.loader.limine = {
     enable = true;
-    enrollConfig = true;               # Generates the modern Limine menu definitions
-    panicOnChecksumMismatch = true;    # Adds a security layer against corrupted builds
-    maxGenerations = 10;               # Prevents your ESP partition from running out of space
+    enrollConfig = true;
+    panicOnChecksumMismatch = true;
+    maxGenerations = 10;
+
+    # Inject your colors here
+    extraConfig = ''
+      THEME_BACKGROUND=${theme.bg}
+      THEME_FOREGROUND=${theme.fg}
+      THEME_HIGHLIGHT=${theme.accent}
+    '';
   };
 
-  # Kernel flavor choices
   boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.loader.efi.canTouchEfiVariables = true;
 }

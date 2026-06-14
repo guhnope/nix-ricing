@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, activeTheme, ... }:
 
 {
   environment.systemPackages = with pkgs; [
