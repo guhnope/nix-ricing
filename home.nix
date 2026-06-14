@@ -76,7 +76,7 @@ in
       overlay_text_color = ${theme.fg}
     '';
 
-    "ghostty/config".text = ''
+    "ghostty/config.ghostty".text = ''
       # Automatically sourced from themes.nix
       theme = ${theme.ghostty}
 

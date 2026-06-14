@@ -28,12 +28,12 @@ pkgs:
     alt = "7fbbb3";
     warn = "e67e80";
     ghostty = "Everforest Dark Hard";
-    gtkName = "Everforest-Dark";
+    gtkName = "Everforest-Green-Dark";
     gtkPkg = pkgs.everforest-gtk-theme;
-    iconName = "Papirus-Dark";
+    iconName = "oomox-Everforest_light";
     iconPkg = pkgs.papirus-icon-theme;
-    cursorName = "Phinger-Cursors-Light";
-    cursorPkg = pkgs.phinger-cursors;
+    cursorName = "Everforest cursors";
+    cursorPkg = pkgs.everforest-cursors;
     cursorSize = 24;
   };
 
