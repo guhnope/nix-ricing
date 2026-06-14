@@ -46,13 +46,13 @@ pkgs: {
     alt = "b8bb26";
     warn = "fb4934";
 
-    gtkName = "Gruvbox-Dark-BL";
+    gtkName = "Gruvbox-Dark";
     gtkPkg = pkgs.gruvbox-gtk-theme;
     iconName = "Gruvbox-Plus-Dark";
     iconPkg = pkgs.gruvbox-plus-icons;
 
     # 🖱️ Cursor Mapping
-    cursorName = "Capitaine-Cursors-Gruvbox";
+    cursorName = "capitaine-cursors";
     cursorPkg = pkgs.capitaine-cursors; # Includes beautiful matching organic curves
     cursorSize = 24;
   };

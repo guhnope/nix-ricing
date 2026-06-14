@@ -5,13 +5,16 @@
   pkgs,
   osConfig,
   username,
-  activeTheme ? null,
+  activeTheme ? "gruvbox", # Default if not passed
   ...
 }:
 
 let
+  # Import your theme palette correctly by passing pkgs
+  themes = import ./modules/themes.nix pkgs;
+  theme = themes.${activeTheme};
+
   hyprland = osConfig.programs.hyprland.enable or false;
-  niri = osConfig.programs.niri.enable or false;
   waybar = osConfig.programs.waybar.enable or false;
 in
 {
@@ -20,61 +23,118 @@ in
   home.stateVersion = "26.05";
   programs.home-manager.enable = true;
 
+  # GTK Theme Integration
+  gtk = {
+    enable = true;
+    theme = {
+      name = theme.gtkName;
+      package = theme.gtkPkg;
+    };
+    iconTheme = {
+      name = theme.iconName;
+      package = theme.iconPkg;
+    };
+    cursorTheme = {
+      name = theme.cursorName;
+      package = theme.cursorPkg;
+      size = theme.cursorSize;
+    };
+  };
+  # Required to apply the settings to the actual desktop session
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+      gtk-theme = theme.gtkName;
+      icon-theme = theme.iconName;
+      cursor-theme = theme.cursorName;
+    };
+  };
+  # Fastfetch Configuration (Add this to your home.nix to fix Ghostty)
+  programs.fastfetch = {
+    enable = true;
+    settings = {
+      display = {
+        separator = " ➜ ";
+        color = {
+          keys = "${theme.accent}";
+        };
+      };
+      modules = [
+        "os"
+        "host"
+        "kernel"
+        "uptime"
+        "memory"
+        "break"
+      ];
+    };
+  };
+
   xdg.configFile = {
-    # Any static configurations that don't change based on session go here
-    # e.g., "ghostty/config".source = ./configs/ghostty;
+    # Static configs
   }
   // lib.optionalAttrs (hyprland) {
     "hypr/hyprland.lua".source = ./hypr/hyprland.lua;
     "hypr/hyprpaper.conf".source = ./hypr/hyprpaper.conf;
     "hypr/hypridle.conf".source = ./hypr/hypridle.conf;
     "hypr/hyprlauncher.conf".source = ./hypr/hyprlauncher.conf;
-    "fuzzel/fuzzel.ini".source = ./hypr/fuzzel.ini;
+
+    "fuzzel/fuzzel.ini".text = ''
+      [main]
+      font=JetBrainsMono Nerd Font:size=18
+      terminal=ghostty
+      prompt="❯ "
+      icon-theme=${theme.iconName}
+      [colors]
+      background=${theme.bg}ff
+      text=${theme.fg}ff
+      selection=${theme.alt}ff
+      prompt=${theme.accent}ff
+    '';
+
     "waybar/hyprland.jsonc".source = ./hypr/waybar.jsonc;
   }
-  // lib.optionalAttrs (niri) {
-    "niri/config.kdl".source = ./configs/niri.kdl;
-  }
   // lib.optionalAttrs (waybar) {
-    "waybar/config.jsonc".source = ./configs/waybar-config.jsonc;
-    "waybar/style.css".source = ./configs/waybar-style.css;
-  };
+    "waybar/style.css".text = ''
+      * { color: #${theme.fg}; }
+      window#waybar { background: #${theme.bg}; }
+      #workspaces button.active { background: #${theme.accent}; }
+    '';
 
-  programs.waybar = {
-    enable = waybar;
-  };
-  services.cliphist = {
-    enable = true;
-    allowImages = true;
-  };
-  # Fine-tune the systemd service so it only spins up after Niri/Hyprland
-  # hydrates systemd with your session's active environment variables.
-  systemd.user.services.waybar = lib.mkIf waybar {
-    Unit = {
-      Description = "Highly customizable Wayland bar";
-      After = [ "graphical-session.target" ];
-      PartOf = [ "graphical-session.target" ];
-    };
-    Service = {
-      # Ensures the bar automatically spins back up if it experiences an unexpected crash
-      Restart = "on-failure";
-      RestartSec = "2s";
-    };
-  };
+    "wlogout/layout".text = ''
+      { "label": "lock", "action": "loginctl lock-session", "text": "Lock", "keybind": "l" }
+      { "label": "logout", "action": "loginctl terminate-user $USER", "text": "Logout", "keybind": "e" }
+      { "label": "shutdown", "action": "systemctl poweroff", "text": "Shutdown", "keybind": "s" }
+      { "label": "reboot", "action": "systemctl reboot", "text": "Reboot", "keybind": "r" }
+    '';
 
-  programs.fish = {
-    enable = true;
-    interactiveShellInit = ''
-      set -g fish_greeting ""
-      fastfetch
+    "wlogout/style.css".text = ''
+      window { background-color: rgba(0, 0, 0, 0.5); }
+      grid {
+          margin: 300px 500px;
+          background-color: #${theme.bg};
+          border: 2px solid #${theme.accent};
+          border-radius: 10px;
+          padding: 10px;
+      }
+      button {
+          background-color: #${theme.bg};
+          color: #${theme.fg};
+          border: 2px solid #${theme.accent};
+          border-radius: 10px;
+          margin: 10px;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 100px;
+      }
+      button:hover { background-color: #${theme.accent}; color: #${theme.bg}; }
+      #lock { background-image: url("${theme.iconPkg}/share/icons/${theme.iconName}/apps/scalable/system-lock-screen.svg"); }
+      #logout { background-image: url("${theme.iconPkg}/share/icons/${theme.iconName}/apps/scalable/logout_highlight.svg"); }
+      #shutdown { background-image: url("${theme.iconPkg}/share/icons/${theme.iconName}/apps/scalable/system-shutdown.svg"); }
+      #reboot { background-image: url("${theme.iconPkg}/share/icons/${theme.iconName}/apps/scalable/system-reboot.svg"); }
     '';
   };
-  programs.zed-editor = {
-    enable = true;
-    extensions = [ "nix" ];
-    extraPackages = [
-      pkgs.nixd
-      pkgs.lua-language-server
-    ];
-  };
+
+  programs.waybar.enable = waybar;
+  services.cliphist.enable = true;
 }

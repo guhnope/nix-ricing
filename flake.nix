@@ -26,7 +26,7 @@
           ./modules/limine.nix
           /etc/nixos/hardware-configuration.nix
           ./configuration.nix
-          ./regreet/gruvbox.nix
+          ./modules/regreet.nix
           ./modules/apps.nix
           ./modules/devices.nix
           ./modules/gaming.nix

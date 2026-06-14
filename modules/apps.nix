@@ -16,6 +16,7 @@
     signal-desktop
     zed-editor
     waybar
+    nwg-look
     vial
     (pkgs.lib.hiPrio (
       pkgs.runCommand "launcher-hider-profile" { } ''
