@@ -30,22 +30,6 @@
         NoDisplay=true
         Exec=nvim %F
         EOF
-
-        cat <<EOF > $appsDir/nwg-look.desktop
-        [Desktop Entry]
-        Type=Application
-        Name=nwg-look
-        NoDisplay=true
-        Exec=nwg-look
-        EOF
-
-        cat <<EOF > $appsDir/qt6ct.desktop
-        [Desktop Entry]
-        Type=Application
-        Name=Qt6 Configuration Tool
-        NoDisplay=true
-        Exec=qt6ct
-        EOF
       ''
     ))
   ];
