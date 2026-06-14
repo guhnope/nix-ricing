@@ -49,26 +49,10 @@ in
 
   programs.fastfetch = {
     enable = true;
-    settings = {
-      display = {
-        separator = " ➜ ";
-        color = {
-          keys = "${theme.accent}";
-        };
-      };
-      modules = [
-        "os"
-        "host"
-        "kernel"
-        "uptime"
-        "memory"
-        "break"
-      ];
-    };
   };
 
   xdg.configFile = {
-    # --- UI Components ---
+
     "fuzzel/fuzzel.ini".text = ''
       [main]
       font=JetBrainsMono Nerd Font:size=18
@@ -82,12 +66,8 @@ in
       prompt=${theme.accent}ff
     '';
 
-    # --- Application Theming ---
     "mpv/mpv.conf".text = ''
-      osd-back-color='#${theme.bg}FF'
-      osd-color='#${theme.fg}FF'
-      osd-border-color='#${theme.accent}FF'
-      osd-font-size=24
+      background=#${theme.bg}'
     '';
 
     "imv/config".text = ''
@@ -96,16 +76,6 @@ in
       overlay_text_color = ${theme.fg}
     '';
 
-    "zed/settings.json".text = builtins.toJSON {
-      buffer_font_family = "JetBrainsMono Nerd Font";
-      theme = {
-        mode = "dark";
-      };
-    };
-
-    "heroic/config.json".text = builtins.toJSON {
-      theme = "dark";
-    };
   }
   // lib.optionalAttrs (hyprland) {
     "hypr/hyprland.lua".source = ./hypr/hyprland.lua;

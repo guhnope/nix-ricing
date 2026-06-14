@@ -16,7 +16,6 @@ pkgs: {
     cursorPkg = pkgs.bibata-cursors;
     cursorSize = 24;
   };
-
   catppuccin-mocha = {
     bg = "1e1e2e";
     fg = "cdd6f4";
@@ -70,7 +69,7 @@ pkgs: {
 
     # 🖱️ Cursor Mapping
     cursorName = "Nordzy-cursors";
-    cursorPkg = pkgs.nordzy-cursors;
+    cursorPkg = pkgs.nordzy-cursor-theme;
     cursorSize = 24;
   };
 
