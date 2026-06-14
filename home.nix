@@ -76,6 +76,15 @@ in
       overlay_text_color = ${theme.fg}
     '';
 
+    "ghostty/config".text = ''
+      # Automatically sourced from themes.nix
+      theme = ${theme.ghostty}
+
+      font-family = "JetBrainsMono Nerd Font"
+      font-size = 14
+      window-decoration = false
+      confirm-close-surface = false
+    '';
   }
   // lib.optionalAttrs (hyprland) {
     "hypr/hyprland.lua".source = ./hypr/hyprland.lua;
@@ -98,10 +107,28 @@ in
     '';
     "wlogout/style.css".text = ''
       window { background-color: rgba(0, 0, 0, 0.5); }
-      grid { background-color: #${theme.bg}; border: 2px solid #${theme.accent}; border-radius: 10px; padding: 10px; }
-      button { background-color: #${theme.bg}; color: #${theme.fg}; border: 2px solid #${theme.accent}; border-radius: 10px; margin: 10px; }
+      grid {
+          margin: 300px 500px;
+          background-color: #${theme.bg};
+          border: 2px solid #${theme.accent};
+          border-radius: 10px;
+          padding: 10px;
+      }
+      button {
+          background-color: #${theme.bg};
+          color: #${theme.fg};
+          border: 2px solid #${theme.accent};
+          border-radius: 10px;
+          margin: 10px;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 100px;
+      }
       button:hover { background-color: #${theme.accent}; color: #${theme.bg}; }
-      #lock { background-image: url("${theme.iconPkg}/share/icons/${theme.iconName}/apps/scalable/system-lock-screen.svg"); }
+      #lock { background-image: url("${theme.iconPkg}/share/icons/${theme.iconName}/actions/32/system-lock-screen.svg"); }
+      #logout { background-image: url("${theme.iconPkg}/share/icons/${theme.iconName}/actions/32/logout_highlight.svg"); }
+      #shutdown { background-image: url("${theme.iconPkg}/share/icons/${theme.iconName}/actions/32/system-shutdown.svg"); }
+      #reboot { background-image: url("${theme.iconPkg}/share/icons/${theme.iconName}/actions/32/system-reboot.svg"); }
     '';
   };
 
