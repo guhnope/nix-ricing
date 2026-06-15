@@ -30,7 +30,7 @@
           ./modules/apps.nix
           ./modules/devices.nix
           ./modules/gaming.nix
-          ./modules/niri.nix
+          ./niri/niri.nix
           ./hypr/hyprland.nix
         ];
       };

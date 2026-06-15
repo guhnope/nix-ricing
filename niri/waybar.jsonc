@@ -4,11 +4,13 @@
   "height": 32,
   "spacing": 8,
 
-  "modules-left": ["custom/launcher", "hyprland/window"],
-  "modules-center": ["hyprland/workspaces"],
+  // 📐 Choose what modules go where
+  "modules-left": ["custom/launcher", "niri/window"],
+  "modules-center": ["niri/workspaces"],
   "modules-right": [
     "tray",
     "clock",
+    "custom/wallpaper",
     "custom/screenshot",
     "custom/notification",
     "pulseaudio",
@@ -16,26 +18,30 @@
     "custom/power",
   ],
 
+  // 🚀 Fuzzel Launcher Module
   "custom/launcher": {
-    "format": " 󱗼 ",
+    "format": "  ", // NixOS / Nerd Font icon
     "on-click": "fuzzel",
     "tooltip": false,
   },
 
+  // ⏱️ Clock Settings
   "clock": {
     "format": "{:%H:%M  |  %A, %B %d}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
   },
 
+  // 🔊 Audio Controller Binds
   "pulseaudio": {
     "format": "{icon}  {volume}%",
     "format-muted": "󰝟 Muted",
     "format-icons": {
       "default": ["󰕿", "󰖀", "󰕾"],
     },
-    "on-click": "hyprpwcenter",
+    "on-click": "pavucontrol",
   },
 
+  // 🌐 Network Status
   "network": {
     "format-wifi": "   {essid}",
     "format-ethernet": "󰈀 ",
@@ -43,11 +49,12 @@
     "tooltip-format": "{ifname} via {gwaddr}",
   },
 
+  // 📥 System Tray Setup
   "tray": {
     "icon-size": 21,
     "spacing": 10,
   },
-
+  // 🪟 Hyprland Workspaces
   "hyprland/workspaces": {
     "format": "{name}",
     "on-click": "activate",
@@ -57,22 +64,43 @@
     "persistent-workspaces": {},
   },
 
+  // 🎞️ Niri Scrollable Workspaces
+  "niri/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate",
+    "format-icons": {
+      "default": "",
+      "active": "󱓻",
+    },
+    // 🚀 Leaving "persistent-workspaces" out entirely forces Niri
+    // to dynamically cull empty workspaces from your bar!
+  },
+
+  // 🪟 Hyprland Active Window (Ignored in Niri)
   "hyprland/window": {
-    "format": " 󰖲 {title} ",
+    "format": " 󰖲  {title} ",
     "separate-outputs": true,
     "icon": true,
     "icon-size": 14,
     "max-length": 40,
   },
 
+  // 🌌 Niri Active Window (Ignored in Hyprland)
+  "niri/window": {
+    "format": " 󰖲  {title} ",
+    "separate-outputs": true,
+    "max-length": 40,
+  },
+
+  // Clipboard Manager (Requires cliphist & rofi/wofi)
   "custom/cliphist": {
     "format": "📋 ",
     "tooltip": false,
     "on-click": "cliphist list | wofi --dmenu | cliphist decode | wl-copy",
   },
 
-  // 🖼️ Wpaperd Wallpaper Switcher
-  "custom/wpaperd": {
+  // 🖼️ Wallpaper Switcher
+  "custom/wallpaper": {
     "format": "🖼️",
     "tooltip": false,
     "on-click": "wpaperctl next",
@@ -89,8 +117,8 @@
   "custom/screenshot": {
     "format": " 📸",
     "tooltip": false,
-    "on-click": "hyprshot -m region", // Drags a region to copy & save
-    "on-click-right": "hyprshot -m window", // Right-click captures a tile
+    "on-click": "grimshot savecopy area", // Drags a region to copy & save
+    "on-click-right": "grimshot savecopy screen", // Right-click captures whole screen
   },
   "custom/power": {
     "format": "⏻  ",

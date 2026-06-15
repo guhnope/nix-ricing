@@ -9,7 +9,7 @@
 }:
 
 let
-  themes = import ./modules/themes.nix pkgs;
+  themes = import ./theming/themes.nix pkgs;
   theme = themes.${activeTheme};
   hyprland = osConfig.programs.hyprland.enable or false;
   waybar = osConfig.programs.waybar.enable or false;
@@ -55,7 +55,8 @@ in
 
     "fuzzel/fuzzel.ini".text = ''
       [main]
-      font=JetBrainsMono Nerd Font:size=24
+      font=JetBrainsMono Nerd Font:size=22
+      lines=20
       terminal=ghostty
       prompt="❯ "
       icon-theme=${theme.iconName}
@@ -94,8 +95,22 @@ in
     "hypr/hyprland.lua".source = ./hypr/hyprland.lua;
     "hypr/hypridle.conf".source = ./hypr/hypridle.conf;
     "hypr/hyprlauncher.conf".source = ./hypr/hyprlauncher.conf;
-    "waybar/hyprland.jsonc".source = ./hypr/waybar.jsonc;
+    "waybar/niri.jsonc".source = ./hypr/waybar.jsonc;
   }
+
+  // lib.optionalAttrs (niri) {
+    "niri/config.kdl".source = ./niri/config.kdl;
+    "niri/niri-portals.conf".source = ./niri/niri-portals.conf;
+    "waybar/niri.jsonc".source = ./niri/waybar.jsonc;
+  }
+
+  // lib.optionalAttrs (mango) {
+    "mango/bind.conf".source = ./mango/bind.conf;
+    "mango/config.conf".source = ./mango/config.conf;
+    "mango/rule.conf".source = ./mango/rule.conf;
+    "waybar/mango.jsonc".source = ./mango/waybar.jsonc;
+  }
+
   // lib.optionalAttrs (waybar) {
     "waybar/style.css".text = ''
       * { color: #${theme.fg}; }
