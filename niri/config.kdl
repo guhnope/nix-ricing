@@ -48,7 +48,7 @@ window-rule {
 
 binds {
     // Shell UI Elements
-    Mod+Space          { spawn "walker"; }
+    Mod+Space          { spawn "fuzzel"; }
     Mod+L              { spawn "gtklock"; }
     Mod+X              { spawn "wlogout" "--buttons-per-row" "4"; }
     Mod+Y              { spawn "wpaperd"; }
