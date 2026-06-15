@@ -12,13 +12,10 @@ mod = "mod4"
 terminal = "ghostty"
 launcher = "fuzzel"
 file_manager = "nemo"
+wlogout = "wlogout  --protocol layer-shell --buttons-per-row 4"
 
 keys = [
     # 🖥️ WINDOW FOCUS CONTROL (Hyprland style: Vim keys or Arrow keys)
-    Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
-    Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
-    Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
-    Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
     Key([mod], "Left", lazy.layout.left(), desc="Move focus to left"),
     Key([mod], "Right", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "Down", lazy.layout.down(), desc="Move focus down"),
@@ -36,7 +33,7 @@ keys = [
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
     # 🏃 APP LAUNCHERS (Matching your system packages)
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch Ghostty"),
-    Key([mod], "d", lazy.spawn(launcher), desc="Launch Fuzzel Launcher"),
+    Key([mod], "Space", lazy.spawn(launcher), desc="Launch Fuzzel Launcher"),
     Key([mod], "e", lazy.spawn(file_manager), desc="Launch Nemo File Manager"),
     # ❌ WINDOW MANAGEMENT
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
@@ -50,6 +47,7 @@ keys = [
     # 🔄 QTILE SESSION MANAGEMENT
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload Qtile Config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+    Key([mod], "x", lazy.spawn(wlogout), desc="Launch WLogout"),
 ]
 
 # 🏷️ WORKSPACES (Groups 1-9)
