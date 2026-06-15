@@ -20,7 +20,7 @@
 
   // 🚀 Fuzzel Launcher Module
   "custom/launcher": {
-    "format": " ", // NixOS / Nerd Font icon
+    "format": "  ", // NixOS / Nerd Font icon
     "on-click": "fuzzel",
     "tooltip": false,
   },
