@@ -16,6 +16,7 @@
     signal-desktop
     zed-editor
     waybar
+    fuzzel
     nwg-look
     vial
     (pkgs.lib.hiPrio (

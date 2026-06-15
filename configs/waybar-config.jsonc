@@ -78,7 +78,7 @@
 
   // 🪟 Hyprland Active Window (Ignored in Niri)
   "hyprland/window": {
-    "format": " 󰖲 {title} ",
+    "format": " 󰖲  {title} ",
     "separate-outputs": true,
     "icon": true,
     "icon-size": 14,
@@ -87,7 +87,7 @@
 
   // 🌌 Niri Active Window (Ignored in Hyprland)
   "niri/window": {
-    "format": " 󰘔 {title} ",
+    "format": " 󰖲  {title} ",
     "separate-outputs": true,
     "max-length": 40,
   },
