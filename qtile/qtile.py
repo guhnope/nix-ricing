@@ -36,7 +36,7 @@ keys = [
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
     # 🏃 APP LAUNCHERS (Matching your system packages)
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch Ghostty"),
-    Key([mod], "d", lazy.spawn(launcher), desc="Launch Wofi Launcher"),
+    Key([mod], "d", lazy.spawn(launcher), desc="Launch Fuzzel Launcher"),
     Key([mod], "e", lazy.spawn(file_manager), desc="Launch Nemo File Manager"),
     # ❌ WINDOW MANAGEMENT
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
