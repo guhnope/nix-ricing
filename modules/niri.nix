@@ -13,8 +13,6 @@
     slurp
     cliphist
     mako
-    walker
-    elephant
     gtklock
     wpaperd
     pavucontrol

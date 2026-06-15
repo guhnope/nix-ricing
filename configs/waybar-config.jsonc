@@ -5,8 +5,8 @@
   "spacing": 8,
 
   // 📐 Choose what modules go where
-  "modules-left": ["custom/launcher", "hyprland/window", "niri/window"],
-  "modules-center": ["hyprland/workspaces", "niri/workspaces"],
+  "modules-left": ["custom/launcher", "niri/window"],
+  "modules-center": ["niri/workspaces"],
   "modules-right": [
     "tray",
     "clock",
@@ -18,7 +18,7 @@
     "custom/power",
   ],
 
-  // 🚀 Custom Launcher Module
+  // 🚀 Fuzzel Launcher Module
   "custom/launcher": {
     "format": " ", // NixOS / Nerd Font icon
     "on-click": "fuzzel",
