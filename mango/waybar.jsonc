@@ -4,9 +4,9 @@
   "height": 32,
   "spacing": 8,
 
-  // 📐 Choose what modules go where
-  "modules-left": ["custom/launcher", "niri/window"],
-  "modules-center": ["niri/workspaces"],
+  // Using 'sway' modules as they are the standard for most Wayland TWMs
+  "modules-left": ["custom/launcher", "sway/window"],
+  "modules-center": ["sway/workspaces"],
   "modules-right": [
     "tray",
     "clock",
@@ -18,20 +18,20 @@
     "custom/power",
   ],
 
-  // 🚀 Fuzzel Launcher Module
+  // 🚀 Fuzzel Launcher
   "custom/launcher": {
-    "format": "  ", // NixOS / Nerd Font icon
+    "format": "  ",
     "on-click": "fuzzel",
     "tooltip": false,
   },
 
-  // ⏱️ Clock Settings
+  // ⏱️ Clock
   "clock": {
     "format": "{:%H:%M  |  %A, %B %d}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
   },
 
-  // 🔊 Audio Controller Binds
+  // 🔊 Audio
   "pulseaudio": {
     "format": "{icon}  {volume}%",
     "format-muted": "󰝟 Muted",
@@ -41,7 +41,7 @@
     "on-click": "pavucontrol",
   },
 
-  // 🌐 Network Status
+  // 🌐 Network
   "network": {
     "format-wifi": "   {essid}",
     "format-ethernet": "󰈀 ",
@@ -49,77 +49,52 @@
     "tooltip-format": "{ifname} via {gwaddr}",
   },
 
-  // 📥 System Tray Setup
+  // 📥 Tray
   "tray": {
     "icon-size": 21,
     "spacing": 10,
   },
-  // 🪟 Hyprland Workspaces
-  "hyprland/workspaces": {
-    "format": "{name}",
-    "on-click": "activate",
-    // 🚀 CRITICAL: Make sure this is either false or completely deleted
-    "all-outputs": false,
-    // Ensure you aren't hardcoding persistent empty slots like [1, 2, 3, 4] here
-    "persistent-workspaces": {},
-  },
 
-  // 🎞️ Niri Scrollable Workspaces
-  "niri/workspaces": {
+  // 🪟 Generic Sway Workspaces (Compatible with most Wayland TWMs)
+  "sway/workspaces": {
     "format": "{icon}",
     "on-click": "activate",
     "format-icons": {
       "default": "",
       "active": "󱓻",
     },
-    // 🚀 Leaving "persistent-workspaces" out entirely forces Niri
-    // to dynamically cull empty workspaces from your bar!
+    "persistent-workspaces": {},
   },
 
-  // 🪟 Hyprland Active Window (Ignored in Niri)
-  "hyprland/window": {
+  // 🪟 Generic Sway Window Title
+  "sway/window": {
     "format": " 󰖲  {title} ",
-    "separate-outputs": true,
-    "icon": true,
-    "icon-size": 14,
     "max-length": 40,
   },
 
-  // 🌌 Niri Active Window (Ignored in Hyprland)
-  "niri/window": {
-    "format": " 󰖲  {title} ",
-    "separate-outputs": true,
-    "max-length": 40,
-  },
-
-  // Clipboard Manager (Requires cliphist & rofi/wofi)
-  "custom/cliphist": {
-    "format": "📋 ",
-    "tooltip": false,
-    "on-click": "cliphist list | wofi --dmenu | cliphist decode | wl-copy",
-  },
-
-  // 🖼️ Wallpaper Switcher
+  // 🖼️ Wallpaper
   "custom/wallpaper": {
     "format": "🖼️",
     "tooltip": false,
     "on-click": "wpaperctl next",
   },
 
-  // 🔔 Notifications (Requires mako or dunst)
+  // 🔔 Notifications
   "custom/notification": {
     "format": "🔔 ",
     "tooltip": false,
     "on-click": "makoctl dismiss",
   },
 
-  // 📸 Custom Screenshot Module
+  // 📸 Screenshot
   "custom/screenshot": {
     "format": " 📸",
     "tooltip": false,
-    "on-click": "grimshot savecopy area", // Drags a region to copy & save
-    "on-click-right": "grimshot savecopy screen", // Right-click captures whole screen
+    "on-click": "grimshot savecopy area",
+    "on-click-right": "grimshot savecopy screen",
   },
+
+  // ⏻ Power
   "custom/power": {
     "format": "⏻  ",
     "tooltip": false,
