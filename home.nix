@@ -67,7 +67,7 @@
           "hypr/hyprland.lua".source = ./hypr/hyprland.lua;
           "hypr/hypridle.conf".source = ./hypr/hypridle.conf;
           "hypr/hyprlauncher.conf".source = ./hypr/hyprlauncher.conf;
-          "waybar/niri.jsonc".source = ./hypr/waybar.jsonc;
+          "waybar/hyprland.jsonc".source = ./hypr/waybar.jsonc;
         }
         // lib.optionalAttrs (niri) {
           "niri/config.kdl".source = ./niri/config.kdl;
