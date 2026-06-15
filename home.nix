@@ -12,6 +12,7 @@ let
   themes = import ./theming/themes.nix pkgs;
   theme = themes.${activeTheme};
   hyprland = osConfig.programs.hyprland.enable or false;
+  niri = osConfig.programs.niri.enable or false;
   waybar = osConfig.programs.waybar.enable or false;
 in
 {
@@ -102,13 +103,6 @@ in
     "niri/config.kdl".source = ./niri/config.kdl;
     "niri/niri-portals.conf".source = ./niri/niri-portals.conf;
     "waybar/niri.jsonc".source = ./niri/waybar.jsonc;
-  }
-
-  // lib.optionalAttrs (mango) {
-    "mango/bind.conf".source = ./mango/bind.conf;
-    "mango/config.conf".source = ./mango/config.conf;
-    "mango/rule.conf".source = ./mango/rule.conf;
-    "waybar/mango.jsonc".source = ./mango/waybar.jsonc;
   }
 
   // lib.optionalAttrs (waybar) {

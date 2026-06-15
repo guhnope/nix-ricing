@@ -133,8 +133,5 @@ layer-rule {
 // ----------------------------------------------------------------
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "DISPLAY" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
 // Start the applications
-spawn-at-startup "pandora"
 spawn-at-startup "waybar"
-spawn-at-startup "hypridle"
-spawn-at-startup "hyprpolkitagent"
 config-notification { disable-failed; }
