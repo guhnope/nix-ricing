@@ -47,37 +47,9 @@ in
   }
   // lib.optionalAttrs (waybar) {
     "waybar/style.css".text = ''
-      * {
-          border: none;
-          border-radius: 0;
-          font-family: "JetBrainsMono Nerd Font";
-          font-size: 13px;
-          font-weight: bold;
-      }
-      window#waybar {
-          background-color: #${theme.bg};
-          color: #${theme.fg};
-          border-bottom: 2px solid #${theme.alt}; /* Using 'alt' for subtle borders */
-      }
-      #custom-launcher, #taskbar, #clock, #tray, #pulseaudio, #network, #custom-power, #workspaces {
-          background-color: #${theme.alt}; /* Use a slightly different shade if your theme supports it */
-          color: #${theme.fg};
-          padding: 0px 15px;
-          margin: 4px 4px;
-          border: 1px solid #${theme.accent};
-          border-radius: 8px;
-      }
-      #custom-launcher { color: #${theme.accent}; }
-      #custom-launcher:hover { background-color: #${theme.accent}; color: #${theme.bg}; }
-      #workspaces button.active, #workspaces button.focused {
-          color: #${theme.accent};
-          font-weight: bold;
-      }
-      #clock { color: #${theme.accent}; }
-      #pulseaudio { color: #${theme.alt}; }
-      #network { color: #${theme.accent}; }
-      #custom-power { color: #${theme.warn}; }
-      #custom-power:hover { background-color: #${theme.warn}; color: #${theme.bg}; }
+      * { color: #${theme.fg}; }
+      window#waybar { background: #${theme.bg}; }
+      #workspaces button.active { background: #${theme.accent}; }
     '';
     "wlogout/layout".text = ''
       { "label": "lock", "action": "loginctl lock-session", "text": "Lock", "keybind": "l" }
