@@ -20,9 +20,12 @@
       hyprtoolkit
       hyprshutdown
       hyprlauncher
-      fuzzel # Because bwrap issues on Nix breaks hyprlauncher, noctalia and walker
+      hyprpolkitagent # Add the package here
+      fuzzel
     ];
+
     services.hypridle.enable = true;
+
     xdg.portal = {
       enable = true;
       extraPortals = with pkgs; [

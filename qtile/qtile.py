@@ -1,9 +1,10 @@
 import os
 import subprocess
 
-from libqtile import hook, layout
+from libqtile import bar, hook, layout, widget qtile
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
+from qtile_extras import widget as extras
 
 # 🔑 MODIFIER KEY (Super / Windows Key)
 mod = "mod4"
@@ -53,8 +54,7 @@ keys = [
 ]
 
 # 🏷️ WORKSPACES (Groups 1-9)
-groups = [Group(i) for i in "123456789"]
-
+groups = [Group("1", label=""), Group("2", label=""), ...]
 for i in groups:
     keys.extend(
         [
@@ -88,7 +88,50 @@ layouts = [
 
 # 🖥️ SCREEN & STATUS BAR HOOK
 # We set standard blank Screens because Waybar runs independently on top of the compositor layer.
-screens = [Screen()]
+colors = {"bg": "#282828", "fg": "#ebdbb2", "accent": "#83a598", "alt": "#3c3836"}
+
+screens = [
+    Screen(
+        top=bar.Bar(
+            [
+                # 🚀 Launcher
+                widget.TextBox(
+                    "  ",
+                    foreground=colors["accent"],
+                    mouse_callbacks={"Button1": lambda: qtile.cmd_spawn(launcher)},
+                ),
+                # 🪟 Window Name
+                widget.WindowName(foreground=colors["fg"], max_chars=40),
+                # 🏷️ Workspaces (The Qtile equivalent of niri/workspaces)
+                widget.GroupBox(
+                    active=colors["accent"],
+                    inactive=colors["alt"],
+                    highlight_method="line",
+                    this_current_screen_border=colors["accent"],
+                    foreground=colors["fg"],
+                    margin_x=5,
+                ),
+                widget.Spacer(),  # Pushes modules to the right
+                # 📥 Tray
+                widget.Systray(padding=10),
+                # ⏱️ Clock
+                widget.Clock(format="%H:%M | %A, %B %d", foreground=colors["accent"]),
+                # 🔊 Volume
+                widget.PulseVolume(foreground=colors["accent"], fmt=" 󰕾 {}"),
+                # ⏻ Power
+                widget.TextBox(
+                    " ⏻ ",
+                    foreground="#fb4934",
+                    mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("wlogout")},
+                ),
+            ],
+            32,  # Height
+            background=colors["bg"],
+            opacity=0.9,
+            margin=[4, 8, 0, 8],  # Gaps (Top, Right, Bottom, Left)
+        ),
+    ),
+]
 
 # 🐭 MOUSE CONTROLS (Super + Left/Right click to drag or resize floating windows)
 mouse = [
@@ -109,7 +152,6 @@ mouse = [
 @hook.subscribe.startup_once
 def autostart():
     # Spawns your bar system natively on boot
-    subprocess.Popen(["waybar"])
     # If your notifications daemon or authentication agents need manual kicks under Qtile:
     # subprocess.Popen(["hyprpolkitagent"])
 
@@ -126,7 +168,6 @@ floating_layout = layout.Floating(
         Match(title="pinentry"),  # GPG Key password entries
     ]
 )
-
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True

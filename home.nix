@@ -13,6 +13,8 @@ let
   theme = themes.${activeTheme};
   hyprland = osConfig.programs.hyprland.enable or false;
   niri = osConfig.programs.niri.enable or false;
+  qtile = osConfig.services.xserver.windowManager.qtile.enable or false;
+  mango = osConfig.programs.mangowc.enable or false;
   waybar = osConfig.programs.waybar.enable or false;
 in
 {
@@ -20,6 +22,10 @@ in
   home.homeDirectory = "/home/${username}";
   home.stateVersion = "26.05";
   programs.home-manager.enable = true;
+  programs.fastfetch = {
+    enable = true;
+  };
+  services.cliphist.enable = true;
 
   # GTK Theme Integration
   gtk = {
@@ -48,102 +54,31 @@ in
     };
   };
 
-  programs.fastfetch = {
-    enable = true;
+  xdg.configFile =
+    { }
+    // lib.optionalAttrs (hyprland) {
+      "hypr/hyprland.lua".source = ./hypr/hyprland.lua;
+      "hypr/hypridle.conf".source = ./hypr/hypridle.conf;
+      "hypr/hyprlauncher.conf".source = ./hypr/hyprlauncher.conf;
+      "waybar/niri.jsonc".source = ./hypr/waybar.jsonc;
+    }
+    // lib.optionalAttrs (niri) {
+      "niri/config.kdl".source = ./niri/config.kdl;
+      "niri/niri-portals.conf".source = ./niri/niri-portals.conf;
+      "waybar/niri.jsonc".source = ./niri/waybar.jsonc;
+    }
+    // lib.optionalAttrs (qtile) {
+      "qtile/config.py".source = ./qtile/config.py;
+    }
+    // lib.optionalAttrs (mango) {
+      "mango/config.conf".source = ./mango/config.conf;
+      "mango/bind.conf".source = ./mango/bind.conf;
+      "mango/rule.conf".source = ./mango/rule.conf;
+      "waybar/mango.jsonc".source = ./mango/waybar.jsonc;
+    };
+
+  programs.waybar = {
+    enable = true; # Keep this to install the package
+    systemd.enable = false; # This disables the systemd service automatically
   };
-
-  xdg.configFile = {
-
-    "fuzzel/fuzzel.ini".text = ''
-      [main]
-      font=JetBrainsMono Nerd Font:size=22
-      lines=20
-      terminal=ghostty
-      prompt="❯ "
-      icon-theme=${theme.iconName}
-      [icons]
-      icon-size=64
-      icon-theme=${theme.iconName}
-      [colors]
-      background=${theme.bg}ff
-      text=${theme.fg}ff
-      selection=${theme.alt}ff
-      prompt=${theme.accent}ff
-
-    '';
-
-    "mpv/mpv.conf".text = ''
-      background=#${theme.bg}'
-    '';
-
-    "imv/config".text = ''
-      [options]
-      background = ${theme.bg}
-      overlay_text_color = ${theme.fg}
-    '';
-
-    "ghostty/config.ghostty".text = ''
-      # Automatically sourced from themes.nix
-      theme = ${theme.ghostty}
-
-      font-family = "JetBrainsMono Nerd Font"
-      font-size = 14
-      window-decoration = false
-      confirm-close-surface = false
-    '';
-  }
-  // lib.optionalAttrs (hyprland) {
-    "hypr/hyprland.lua".source = ./hypr/hyprland.lua;
-    "hypr/hypridle.conf".source = ./hypr/hypridle.conf;
-    "hypr/hyprlauncher.conf".source = ./hypr/hyprlauncher.conf;
-    "waybar/niri.jsonc".source = ./hypr/waybar.jsonc;
-  }
-
-  // lib.optionalAttrs (niri) {
-    "niri/config.kdl".source = ./niri/config.kdl;
-    "niri/niri-portals.conf".source = ./niri/niri-portals.conf;
-    "waybar/niri.jsonc".source = ./niri/waybar.jsonc;
-  }
-
-  // lib.optionalAttrs (waybar) {
-    "waybar/style.css".text = ''
-      * { color: #${theme.fg}; }
-      window#waybar { background: #${theme.bg}; }
-      #workspaces button.active { background: #${theme.accent}; }
-    '';
-    "wlogout/layout".text = ''
-      { "label": "lock", "action": "loginctl lock-session", "text": "Lock", "keybind": "l" }
-      { "label": "logout", "action": "loginctl terminate-user $USER", "text": "Logout", "keybind": "e" }
-      { "label": "shutdown", "action": "systemctl poweroff", "text": "Shutdown", "keybind": "s" }
-      { "label": "reboot", "action": "systemctl reboot", "text": "Reboot", "keybind": "r" }
-    '';
-    "wlogout/style.css".text = ''
-      window { background-color: rgba(0, 0, 0, 0.5); }
-      grid {
-          margin: 300px 500px;
-          background-color: #${theme.bg};
-          border: 2px solid #${theme.accent};
-          border-radius: 10px;
-          padding: 10px;
-      }
-      button {
-          background-color: #${theme.bg};
-          color: #${theme.fg};
-          border: 2px solid #${theme.accent};
-          border-radius: 10px;
-          margin: 10px;
-          background-repeat: no-repeat;
-          background-position: center;
-          background-size: 100px;
-      }
-      button:hover { background-color: #${theme.accent}; color: #${theme.bg}; }
-      #lock { background-image: url("${theme.iconPkg}/share/icons/${theme.iconName}/apps/scalable/system-lock-screen.svg"); }
-      #logout { background-image: url("${theme.iconPkg}/share/icons/${theme.iconName}/apps/scalable/logout_highlight.svg"); }
-      #shutdown { background-image: url("${theme.iconPkg}/share/icons/${theme.iconName}/apps/scalable/system-shutdown.svg"); }
-      #reboot { background-image: url("${theme.iconPkg}/share/icons/${theme.iconName}/apps/scalable/system-reboot.svg"); }
-    '';
-  };
-
-  programs.waybar.enable = waybar;
-  services.cliphist.enable = true;
 }
