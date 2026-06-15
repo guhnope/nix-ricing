@@ -1,10 +1,9 @@
 import os
 import subprocess
 
-from libqtile import bar, hook, layout, widget qtile
+from libqtile import bar, hook, layout, qtile, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
-from qtile_extras import widget as extras
 
 # 🔑 MODIFIER KEY (Super / Windows Key)
 mod = "mod4"
@@ -54,7 +53,10 @@ keys = [
 ]
 
 # 🏷️ WORKSPACES (Groups 1-9)
-groups = [Group("1", label=""), Group("2", label=""), ...]
+groups = [
+    Group("1", label=""),
+    Group("2", label=""),
+]
 for i in groups:
     keys.extend(
         [
@@ -149,11 +151,11 @@ mouse = [
 
 
 # 🚀 AUTOSTART DAEMONS (Launches Waybar automatically when Qtile initializes)
-@hook.subscribe.startup_once
-def autostart():
-    # Spawns your bar system natively on boot
-    # If your notifications daemon or authentication agents need manual kicks under Qtile:
-    # subprocess.Popen(["hyprpolkitagent"])
+# @hook.subscribe.startup_once
+# def autostart():
+#    # Spawns your bar system natively on boot
+#    # If your notifications daemon or authentication agents need manual kicks under Qtile:
+#    subprocess.Popen(["hyprpolkitagent"])
 
 
 # 🛠️ WAYLAND COMPOSITOR SETTINGS
