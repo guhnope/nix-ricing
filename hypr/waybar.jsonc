@@ -8,7 +8,9 @@
   "modules-center": ["clock"],
   "modules-right": [
     "tray",
+    "custom/wallpaper",
     "custom/screenshot",
+    "custom/cliphist",
     "custom/notification",
     "pulseaudio",
     "network",
@@ -65,28 +67,25 @@
   },
 
   "custom/cliphist": {
-    "format": "📋 ",
+    "format": " ",
     "tooltip": false,
     "on-click": "cliphist list | wofi --dmenu | cliphist decode | wl-copy",
   },
 
-  // 🖼️ Wpaperd Wallpaper Switcher
   "custom/wpaperd": {
-    "format": "🖼️",
+    "format": "",
     "tooltip": false,
     "on-click": "wpaperctl next",
   },
 
-  // 🔔 Notifications (Requires mako or dunst)
   "custom/notification": {
-    "format": "🔔 ",
+    "format": " ",
     "tooltip": false,
     "on-click": "makoctl dismiss",
   },
 
-  // 📸 Custom Screenshot Module
   "custom/screenshot": {
-    "format": " 📸",
+    "format": " ",
     "tooltip": false,
     "on-click": "hyprshot -m region", // Drags a region to copy & save
     "on-click-right": "hyprshot -m window", // Right-click captures a tile

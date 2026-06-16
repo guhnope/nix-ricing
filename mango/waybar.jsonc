@@ -1,36 +1,34 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 32,
+  "height": 36,
   "spacing": 8,
 
   // Using 'sway' modules as they are the standard for most Wayland TWMs
-  "modules-left": ["custom/launcher", "sway/workspaces", "sway/window"],
+  "modules-left": ["custom/launcher", "ext/workspaces"],
   "modules-center": ["clock"],
   "modules-right": [
     "tray",
     "custom/wallpaper",
     "custom/screenshot",
+    "custom/cliphist",
     "custom/notification",
     "pulseaudio",
     "network",
     "custom/power",
   ],
 
-  // 🚀 Fuzzel Launcher
   "custom/launcher": {
     "format": "  ",
     "on-click": "fuzzel",
     "tooltip": false,
   },
 
-  // ⏱️ Clock
   "clock": {
     "format": "{:%H:%M  |  %A, %B %d}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
   },
 
-  // 🔊 Audio
   "pulseaudio": {
     "format": "{icon}  {volume}%",
     "format-muted": "󰝟 Muted",
@@ -40,7 +38,6 @@
     "on-click": "pavucontrol",
   },
 
-  // 🌐 Network
   "network": {
     "format-wifi": "   {essid}",
     "format-ethernet": "󰈀 ",
@@ -48,14 +45,12 @@
     "tooltip-format": "{ifname} via {gwaddr}",
   },
 
-  // 📥 Tray
   "tray": {
     "icon-size": 21,
     "spacing": 10,
   },
 
-  // 🪟 Generic Sway Workspaces (Compatible with most Wayland TWMs)
-  "sway/workspaces": {
+  "ext/workspaces": {
     "format": "{icon}",
     "on-click": "activate",
     "format-icons": {
@@ -65,35 +60,41 @@
     "persistent-workspaces": {},
   },
 
-  // 🪟 Generic Sway Window Title
-  "sway/window": {
+  "ext/window": {
     "format": " 󰖲  {title} ",
     "max-length": 40,
   },
 
-  // 🖼️ Wallpaper
+  "dwl/window": {
+    "format": "{icon} {title}",
+    "max-length": 50,
+  },
+
+  "custom/cliphist": {
+    "format": " ",
+    "tooltip": false,
+    "on-click": "cliphist list | wofi --dmenu | cliphist decode | wl-copy",
+  },
+
   "custom/wallpaper": {
-    "format": "🖼️",
+    "format": "",
     "tooltip": false,
     "on-click": "wpaperctl next",
   },
 
-  // 🔔 Notifications
   "custom/notification": {
-    "format": "🔔 ",
+    "format": " ",
     "tooltip": false,
     "on-click": "makoctl dismiss",
   },
 
-  // 📸 Screenshot
   "custom/screenshot": {
-    "format": " 📸",
+    "format": " ",
     "tooltip": false,
     "on-click": "grimshot savecopy area",
     "on-click-right": "grimshot savecopy screen",
   },
 
-  // ⏻ Power
   "custom/power": {
     "format": "⏻  ",
     "tooltip": false,

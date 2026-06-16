@@ -82,6 +82,7 @@
           "mango/bind.conf".source = ./mango/bind.conf;
           "mango/rule.conf".source = ./mango/rule.conf;
           "waybar/mango.jsonc".source = ./mango/waybar.jsonc;
+          "waybar/mango-menu.xml".source = ./mango/mango-menu.xml;
         };
 
       programs.waybar = {
