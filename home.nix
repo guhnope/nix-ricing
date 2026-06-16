@@ -21,6 +21,7 @@
       niri = osConfig.programs.niri.enable or false;
       qtile = osConfig.services.xserver.windowManager.qtile.enable or false;
       mango = osConfig.programs.mangowc.enable or false;
+      sway = osConfig.programs.sway.enable or false;
       waybar = osConfig.programs.waybar.enable or false;
     in
     {
@@ -76,6 +77,11 @@
         }
         // lib.optionalAttrs (qtile) {
           "qtile/config.py".source = ./qtile/config.py;
+        }
+        // lib.optionalAttrs (sway) {
+          "sway/config".source = ./sway/config;
+          "waybar/sway.jsonc".source = ./sway/waybar.jsonc;
+          "swaync/config.json".source = ./sway/config.json;
         }
         // lib.optionalAttrs (mango) {
           "mango/config.conf".source = ./mango/config.conf;

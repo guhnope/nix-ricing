@@ -1,0 +1,98 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 32,
+  "spacing": 8,
+
+  "modules-left": ["custom/launcher", "sway/workspaces", "sway/window"],
+  "modules-center": ["clock"],
+  "modules-right": [
+    "tray",
+    "custom/wallpaper",
+    "custom/screenshot",
+    "custom/cliphist",
+    "custom/notification",
+    "pulseaudio",
+    "network",
+    "custom/power",
+  ],
+
+  "custom/launcher": {
+    "format": " 󱗼 ",
+    "on-click": "fuzzel",
+    "tooltip": false,
+  },
+
+  "clock": {
+    "format": "{:%H:%M  |  %A, %B %d}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+  },
+
+  "pulseaudio": {
+    "format": "{icon}  {volume}%",
+    "format-muted": "󰝟 Muted",
+    "format-icons": {
+      "default": ["󰕿", "󰖀", "󰕾"],
+    },
+    "on-click": "hyprpwcenter",
+  },
+
+  "network": {
+    "format-wifi": "   {essid}",
+    "format-ethernet": "󰈀 ",
+    "format-disconnected": "󰖪 ",
+    "tooltip-format": "{ifname} via {gwaddr}",
+  },
+
+  "tray": {
+    "icon-size": 21,
+    "spacing": 10,
+  },
+
+  "sway/workspaces": {
+    "format": "{name}",
+    "on-click": "activate",
+    // 🚀 CRITICAL: Make sure this is either false or completely deleted
+    "all-outputs": false,
+    // Ensure you aren't hardcoding persistent empty slots like [1, 2, 3, 4] here
+    "persistent-workspaces": {},
+  },
+
+  "sway/window": {
+    "format": " 󰖲 {title} ",
+    "separate-outputs": true,
+    "icon": true,
+    "icon-size": 14,
+    "max-length": 40,
+  },
+
+  "custom/cliphist": {
+    "format": " ",
+    "tooltip": false,
+    "on-click": "cliphist list | wofi --dmenu | cliphist decode | wl-copy",
+  },
+
+  "custom/wpaperd": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "wpaperctl next",
+  },
+
+  "custom/notification": {
+    "format": " ",
+    "tooltip": false,
+    "on-click": "makoctl dismiss",
+  },
+
+  "custom/screenshot": {
+    "format": " ",
+    "tooltip": false,
+    "on-click": "hyprshot -m region", // Drags a region to copy & save
+    "on-click-right": "hyprshot -m window", // Right-click captures a tile
+  },
+  "custom/power": {
+    "format": "⏻  ",
+    "tooltip": false,
+    "on-click": "wlogout --protocol layer-shell --buttons-per-row 4",
+  },
+}

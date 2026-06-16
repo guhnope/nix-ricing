@@ -1,0 +1,130 @@
+# =====================================================================
+# Sway - Self-Contained Wayland Configuration Profile
+# =====================================================================
+
+# --- Modifier Key ---
+set $mod Mod4
+
+# --- Core Applications ---
+set $term     ghostty
+set $menu     fuzzel
+set $browser  brave
+set $files    nemo
+set $lock     gtklock
+set $launcher fuzzel
+
+# --- Window Styling & Layout Geometry ---
+gaps inner 16
+gaps outer 0
+default_border none
+default_floating_border none
+floating_modifier $mod normal
+
+# Focus tracking styling
+client.focused #7fc8ff #505050 #7fc8ff #7fc8ff #7fc8ff
+client.focused_inactive #505050 #505050 #505050 #505050 #505050
+
+# --- Input Configuration ---
+input "type:keyboard" {
+    # Reference to your system xkb layout configuration
+}
+
+input "type:touchpad" {
+    tap enabled
+    natural_scroll enabled
+}
+
+# --- Window Rules ---
+# Match WezTerm column behavior roughly (Defaulting layout width)
+for_window [app_id="^org\.wezfurlong\.wezterm$"] resize set width 50 ppt
+
+# Picture-in-Picture floating fallback
+for_window [app_id="firefox" title="^Picture-in-Picture$"] floating enable
+
+# Corner rounding isn't natively supported in standard Sway, but we preserve the window intent
+# (If using sway-borders or a rounded fork, uncomment below)
+# corner_radius 20
+
+# --- Keybindings ---
+bindings_config {
+    # Shell UI Elements
+    bindsym $mod+Space       exec $menu
+    bindsym $mod+L           exec $lock
+    bindsym $mod+X           exec wlogout --buttons-per-row 4
+    bindsym $mod+Y           exec wpaperd
+
+    # Core Applications
+    bindsym $mod+Return      exec $term
+    bindsym $mod+B           exec $browser
+    bindsym $mod+G           exec steam
+    bindsym $mod+S           exec spotify-launcher
+    bindsym $mod+E           exec $files
+
+    # Hardware Mappings (Standard Linux System Callouts)
+    bindsym XF86AudioRaiseVolume   exec wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+
+    bindsym XF86AudioLowerVolume   exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+    bindsym XF86AudioMute          exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+    bindsym XF86MonBrightnessUp    exec brightnessctl set +10%
+    bindsym XF86MonBrightnessDown  exec brightnessctl set 10%-
+
+    # Generic Window Actions
+    bindsym $mod+Q           kill
+    bindsym $mod+F           fullscreen toggle
+    bindsym $mod+Shift+F     fullscreen toggle global
+    bindsym $mod+Ctrl+F      layout toggle split
+    # Mod+C Centers a floating window in Sway
+    bindsym $mod+C           move position center
+    bindsym $mod+V           floating toggle
+    bindsym $mod+W           layout toggle tabbed
+
+    # Navigation & Layout Maps (Adapted from Niri Columns to Directional Tiling)
+    bindsym $mod+Left        focus left
+    bindsym $mod+Down        focus down
+    bindsym $mod+Up          focus up
+    bindsym $mod+Right       focus right
+
+    bindsym $mod+Ctrl+Left   move left
+    bindsym $mod+Ctrl+Down   move down
+    bindsym $mod+Ctrl+Up     move up
+    bindsym $mod+Ctrl+Right  move right
+
+    # Directional Workspace Navigation (Page Up/Down loops)
+    bindsym $mod+Page_Down   workspace next_on_output
+    bindsym $mod+Page_Up     workspace prev_on_output
+    bindsym $mod+Ctrl+Page_Down move container to workspace next_on_output
+    bindsym $mod+Ctrl+Page_Up   move container to workspace prev_on_output
+
+    # Workspace Quick-Keys
+    bindsym $mod+1           workspace number 1
+    bindsym $mod+2           workspace number 2
+    bindsym $mod+3           workspace number 3
+    bindsym $mod+4           workspace number 4
+    bindsym $mod+5           workspace number 5
+    bindsym $mod+6           workspace number 6
+    bindsym $mod+7           workspace number 7
+    bindsym $mod+8           workspace number 8
+    bindsym $mod+9           workspace number 9
+
+    bindsym $mod+Ctrl+1      move container to workspace number 1
+    bindsym $mod+Ctrl+2      move container to workspace number 2
+    bindsym $mod+Ctrl+3      move container to workspace number 3
+    bindsym $mod+Ctrl+4      move container to workspace number 4
+    bindsym $mod+Ctrl+5      move container to workspace number 5
+    bindsym $mod+Ctrl+6      move container to workspace number 6
+    bindsym $mod+Ctrl+7      move container to workspace number 7
+    bindsym $mod+Ctrl+8      move container to workspace number 8
+    bindsym $mod+Ctrl+9      move container to workspace number 9
+
+    # System Exits
+    bindsym $mod+Shift+E     quit
+}
+
+# --- Autostart Sequence ---
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
+# Target your existing waybar config if you want to keep the configuration paths shared
+exec waybar -c ~/.config/waybar/sway.jsonc
+exec exec swayidle -w \
+     timeout 300 'swaylock -f -c 000000' \
+     timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+     before-sleep 'swaylock -f -c 000000'

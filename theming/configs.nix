@@ -44,13 +44,7 @@ in
       window-decoration = false
       confirm-close-surface = false
     '';
-  }
-  // lib.optionalAttrs (waybar) {
-    "waybar/style.css".text = ''
-      * { color: #${theme.fg}; }
-      window#waybar { background: #${theme.bg}; }
-      #workspaces button.active { background: #${theme.accent}; }
-    '';
+
     "wlogout/layout".text = ''
       { "label": "lock", "action": "loginctl lock-session", "text": "Lock", "keybind": "l" }
       { "label": "logout", "action": "loginctl terminate-user $USER", "text": "Logout", "keybind": "e" }
@@ -82,5 +76,30 @@ in
       #shutdown { background-image: url("${theme.iconPkg}/share/icons/${theme.iconName}/apps/scalable/system-shutdown.svg"); }
       #reboot { background-image: url("${theme.iconPkg}/share/icons/${theme.iconName}/apps/scalable/system-reboot.svg"); }
     '';
+  }
+  // lib.optionalAttrs (waybar) {
+    "waybar/style.css".text = ''
+      * { color: #${theme.fg}; }
+      window#waybar { background: #${theme.bg}; }
+      #workspaces button.active { background: #${theme.accent}; }
+    '';
   };
+
+// lib.optionalAttrs (sway) {
+  "swaync/style.css".text = ''
+    @define-color bg #${theme.bg};
+    @define-color accent #${theme.accent};
+    @define-color text #${theme.fg};
+    .notification { background: @bg; border: 1px solid @accent; }
+    .control-center { background: @bg; color: @text; }
+  '';
+  "swaylock/config".text = ''
+    color=${theme.bg}
+    ring-color=${theme.accent}
+  '';
+
+};
+
+
+
 }

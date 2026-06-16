@@ -10,6 +10,3 @@ result-*
 #Ignore base configuration and hardware-configuration
 configuration.nix
 hardware-configuration.nix
-regreet/everforest.jpg
-regreet/gruvbox.jpg
-regreet/nord.png
