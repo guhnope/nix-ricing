@@ -4,11 +4,10 @@
   "height": 32,
   "spacing": 8,
 
-  "modules-left": ["custom/launcher", "hyprland/window"],
-  "modules-center": ["hyprland/workspaces"],
+  "modules-left": ["custom/launcher", "hyprland/workspaces", "hyprland/window"],
+  "modules-center": ["clock"],
   "modules-right": [
     "tray",
-    "clock",
     "custom/screenshot",
     "custom/notification",
     "pulseaudio",

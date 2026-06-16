@@ -5,11 +5,10 @@
   "spacing": 8,
 
   // Using 'sway' modules as they are the standard for most Wayland TWMs
-  "modules-left": ["custom/launcher", "sway/window"],
-  "modules-center": ["sway/workspaces"],
+  "modules-left": ["custom/launcher", "sway/workspaces", "sway/window"],
+  "modules-center": ["clock"],
   "modules-right": [
     "tray",
-    "clock",
     "custom/wallpaper",
     "custom/screenshot",
     "custom/notification",

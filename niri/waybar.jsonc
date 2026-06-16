@@ -5,11 +5,10 @@
   "spacing": 8,
 
   // 📐 Choose what modules go where
-  "modules-left": ["custom/launcher", "niri/window"],
-  "modules-center": ["niri/workspaces"],
+  "modules-left": ["custom/launcher", "niri/workspaces", "niri/window"],
+  "modules-center": ["clock"],
   "modules-right": [
     "tray",
-    "clock",
     "custom/wallpaper",
     "custom/screenshot",
     "custom/notification",
