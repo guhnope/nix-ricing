@@ -20,7 +20,8 @@
     xdg.portal = {
       enable = true;
       extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-      config.common.default = "*";
+      # Use mkDefault so it defers to others if they exist
+      config.common.default = lib.mkDefault [ "gtk" ];
     };
   };
 }
