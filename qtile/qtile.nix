@@ -1,4 +1,3 @@
-# modules/qtile.nix
 {
   pkgs,
   config,

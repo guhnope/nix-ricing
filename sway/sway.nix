@@ -1,4 +1,3 @@
-# sway/sway.nix
 {
   pkgs,
   config,

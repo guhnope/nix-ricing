@@ -1,4 +1,3 @@
-# modules/themes.nix
 pkgs:
 
 {

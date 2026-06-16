@@ -1,4 +1,3 @@
-# modules/niri.nix
 {
   pkgs,
   config,
