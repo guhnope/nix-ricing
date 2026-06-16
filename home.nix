@@ -81,7 +81,6 @@
         // lib.optionalAttrs (sway) {
           "sway/config".source = ./sway/config;
           "waybar/sway.jsonc".source = ./sway/waybar.jsonc;
-          "swaync/config.json".source = ./sway/config.json;
         }
         // lib.optionalAttrs (mango) {
           "mango/config.conf".source = ./mango/config.conf;
