@@ -21,7 +21,6 @@ in
 
     # Explicitly whitelist the insecure packages preventing your system rebuild
     permittedInsecurePackages = [
-      "ventoy"
       "electron-39.8.10" # This is the exact underlying EOL framework Bitwarden requires to launch
     ];
   };
@@ -29,18 +28,18 @@ in
   # 🌐 CORE NETWORKING & HARDWARE
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
-  };
+  networking.firewall.checkReversePath = false;
 
   programs.waybar.enable = true;
 
   # Popular Compositor Flags
-  programs.hyprland.enable = false;
+  programs.hyprland.enable = true;
   programs.niri.enable = false;
   programs.mangowc.enable = true;
 
   # Sway flags
   programs.sway = {
-    enable = true;
+    enable = false;
     package = pkgs.swayfx; # This swaps standard sway out for swayfx!
   };
 
@@ -52,13 +51,13 @@ in
 
   # System Services
   security.polkit.enable = true;
-  };
 
   environment.systemPackages = with pkgs; [
     lazygit
     git
     curl
     wget
+    wgnord
     unzip
     nixd
     zip
@@ -93,6 +92,7 @@ in
       "video"
       "input"
       "lp"
+      "nordvpn"
       "scanner"
     ];
   };
