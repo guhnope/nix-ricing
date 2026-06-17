@@ -82,6 +82,8 @@ bindsym $mod+Ctrl+Right  move right
 # Directional Workspace Navigation (Page Up/Down loops)
 bindsym $mod+Page_Down   workspace next_on_output
 bindsym $mod+Page_Up     workspace prev_on_output
+bindsym Ctrl+Mod1+Left       workspace prev
+bindsym Ctrl+Mod1+Right      workspace next
 bindsym $mod+Ctrl+Page_Down move container to workspace next_on_output
 bindsym $mod+Ctrl+Page_Up   move container to workspace prev_on_output
 
@@ -96,15 +98,15 @@ bindsym $mod+7           workspace number 7
 bindsym $mod+8           workspace number 8
 bindsym $mod+9           workspace number 9
 
-bindsym $mod+Ctrl+1      move container to workspace number 1
-bindsym $mod+Ctrl+2      move container to workspace number 2
-bindsym $mod+Ctrl+3      move container to workspace number 3
-bindsym $mod+Ctrl+4      move container to workspace number 4
-bindsym $mod+Ctrl+5      move container to workspace number 5
-bindsym $mod+Ctrl+6      move container to workspace number 6
-bindsym $mod+Ctrl+7      move container to workspace number 7
-bindsym $mod+Ctrl+8      move container to workspace number 8
-bindsym $mod+Ctrl+9      move container to workspace number 9
+bindsym $mod+Shift+1      move container to workspace number 1
+bindsym $mod+Shift+2      move container to workspace number 2
+bindsym $mod+Shift+3      move container to workspace number 3
+bindsym $mod+Shift+4      move container to workspace number 4
+bindsym $mod+Shift+5      move container to workspace number 5
+bindsym $mod+Shift+6      move container to workspace number 6
+bindsym $mod+Shift+7      move container to workspace number 7
+bindsym $mod+Shift+8      move container to workspace number 8
+bindsym $mod+Shift+9      move container to workspace number 9
 
 # System Exits
 bindsym $mod+Shift+E     quit
@@ -113,3 +115,4 @@ bindsym $mod+Escape      inhibit_shortcuts toggle
 # --- Autostart Sequence ---
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec waybar -c ~/.config/waybar/sway.jsonc
+exec waypaper --random

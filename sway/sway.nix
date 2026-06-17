@@ -27,7 +27,6 @@
       pavucontrol
       slurp
       soteria
-      waypaper
       swayidle # Added here as a system tool since services.swayidle is HM-only
     ];
 
