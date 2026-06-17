@@ -16,7 +16,15 @@ in
   _module.args = { inherit activeTheme; };
 
   # 🔓 ALLOW UNFREE PACKAGES
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true; # Required for both Ventoy and Bitwarden
+    
+    # Explicitly whitelist the insecure packages preventing your system rebuild
+    permittedInsecurePackages = [
+      "ventoy"
+      "electron-39.8.10" # This is the exact underlying EOL framework Bitwarden requires to launch
+    ];
+  };
 
   # 🌐 CORE NETWORKING & HARDWARE
   networking.hostName = "nixos";
@@ -55,15 +63,9 @@ in
     nixd
     zip
     tree
-    wlogout
-    matugen
-    grim
     nil
     ripgrep
-    wl-clipboard
-    cliphist
     fastfetch
-    neovim
   ];
 
   # Pipewire Sound Architecture
