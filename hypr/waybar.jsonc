@@ -85,7 +85,7 @@
   },
 
   "custom/screenshot": {
-    "format": " ",
+    "format": "  ",
     "tooltip": false,
     "on-click": "hyprshot -m region", // Drags a region to copy & save
     "on-click-right": "hyprshot -m window", // Right-click captures a tile
