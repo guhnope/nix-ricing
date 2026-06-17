@@ -30,7 +30,6 @@
     bitwarden-desktop
     awww
     waypaper
-    ventoy
     (pkgs.lib.hiPrio (
       pkgs.runCommand "launcher-hider-profile" { } ''
         appsDir=$out/share/applications

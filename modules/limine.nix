@@ -2,7 +2,7 @@
 { pkgs, activeTheme, ... }:
 
 let
-  allThemes = import ../modules/themes.nix pkgs;
+  allThemes = import ../theming/themes.nix pkgs;
   theme = allThemes.${activeTheme};
 in
 {

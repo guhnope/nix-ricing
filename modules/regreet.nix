@@ -7,7 +7,7 @@
 
 let
   # Pass 'pkgs' to the function to get the actual theme set
-  allThemes = import ../modules/themes.nix pkgs;
+  allThemes = import ../theming/themes.nix pkgs;
   theme = allThemes.${activeTheme};
 in
 {
