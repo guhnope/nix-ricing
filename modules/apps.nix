@@ -11,6 +11,9 @@
     spotify
     imv
     mpv
+    wlogout
+    matugen
+    grim
     brave
     discord
     signal-desktop
@@ -18,6 +21,10 @@
     awww
     waybar
     fuzzel
+    wl-clipboard
+    ffmpegthumbnailer
+    gdk-pixbuf
+    cliphist
     nwg-look
     vial
     bitwarden-desktop
