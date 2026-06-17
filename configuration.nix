@@ -7,7 +7,7 @@
 }:
 
 let
-  username = "user"; # <--- Your username here
+  username = "dane"; # <--- Your username here
   activeTheme = "gruvbox"; # <--- Your single source of truth
 in
 {
@@ -18,7 +18,7 @@ in
   # 🔓 ALLOW UNFREE PACKAGES
   nixpkgs.config = {
     allowUnfree = true; # Required for both Ventoy and Bitwarden
-    
+
     # Explicitly whitelist the insecure packages preventing your system rebuild
     permittedInsecurePackages = [
       "ventoy"
