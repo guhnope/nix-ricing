@@ -4,7 +4,7 @@
   environment.systemPackages = with pkgs; [
     neovim
     ghostty
-    nemo
+    caja
     engrampa
     mousepad
     paperwork
@@ -15,16 +15,20 @@
     discord
     signal-desktop
     zed-editor
+    awww
     waybar
     fuzzel
     nwg-look
     vial
+    bitwarden-desktop
+    awww
+    waypaper
+    ventoy
     (pkgs.lib.hiPrio (
       pkgs.runCommand "launcher-hider-profile" { } ''
         appsDir=$out/share/applications
         mkdir -p $appsDir
 
-        # 1. Hide Neovim Launcher Wrapper
         cat <<EOF > $appsDir/nvim.desktop
         [Desktop Entry]
         Type=Application
@@ -32,9 +36,34 @@
         NoDisplay=true
         Exec=nvim %F
         EOF
+
+        cat <<EOF > $appsDir/caja-file-management-properties.desktop
+        [Desktop Entry]
+        Type=Application
+        Name=File Management
+        NoDisplay=true
+        Exec=caja-file-management-properties
+        EOF
+
+        cat <<EOF > $appsDir/caja-browser.desktop
+        [Desktop Entry]
+        Type=Application
+        Name=Files
+        GenericName=File Manager
+        Comment=Browse the file system with the Caja File Manager
+        Icon=system-file-manager
+        TryExec=caja
+        Exec=caja %U
+        Terminal=false
+        Categories=GTK;System;Core;FileManager;
+        MimeType=inode/directory;package;
+        NoDisplay=false
+        EOF
+
       ''
     ))
   ];
+
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
     nerd-fonts.fira-code
