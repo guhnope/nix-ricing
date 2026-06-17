@@ -29,6 +29,7 @@
           ./modules/limine.nix
           /etc/nixos/hardware-configuration.nix
           ./configuration.nix
+          ./modules/system.nix
           ./modules/regreet.nix
           ./modules/apps.nix
           ./modules/devices.nix
