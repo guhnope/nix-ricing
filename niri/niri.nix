@@ -12,7 +12,6 @@
       slurp
       mako
       gtklock
-      wpaperd
       pavucontrol
       soteria
     ];
