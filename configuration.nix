@@ -7,7 +7,7 @@
 }:
 
 let
-  username = "dane"; # <--- Your username here
+  username = "user"; # <--- Your username here
   activeTheme = "gruvbox"; # <--- Your single source of truth
 in
 {
