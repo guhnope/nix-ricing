@@ -79,7 +79,7 @@
   "custom/wallpaper": {
     "format": "",
     "tooltip": false,
-    "on-click": "wpaperctl next",
+    "on-click": "waypaper --backend awww --random",
   },
 
   "custom/notification": {

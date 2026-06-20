@@ -4,7 +4,6 @@
   "height": 32,
   "spacing": 8,
 
-  // 📐 Choose what modules go where
   "modules-left": ["custom/launcher", "niri/workspaces", "niri/window"],
   "modules-center": ["clock"],
   "modules-right": [
@@ -17,20 +16,17 @@
     "custom/power",
   ],
 
-  // 🚀 Fuzzel Launcher Module
   "custom/launcher": {
     "format": "  ", // NixOS / Nerd Font icon
     "on-click": "fuzzel",
     "tooltip": false,
   },
 
-  // ⏱️ Clock Settings
   "clock": {
     "format": "{:%H:%M  |  %A, %B %d}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
   },
 
-  // 🔊 Audio Controller Binds
   "pulseaudio": {
     "format": "{icon}  {volume}%",
     "format-muted": "󰝟 Muted",
@@ -40,7 +36,6 @@
     "on-click": "pavucontrol",
   },
 
-  // 🌐 Network Status
   "network": {
     "format-wifi": "   {essid}",
     "format-ethernet": "󰈀 ",
@@ -52,12 +47,6 @@
     "icon-size": 21,
     "spacing": 10,
   },
-  "hyprland/workspaces": {
-    "format": "{name}",
-    "on-click": "activate",
-    "all-outputs": false,
-    "persistent-workspaces": {},
-  },
 
   "niri/workspaces": {
     "format": "{icon}",
@@ -66,14 +55,6 @@
       "default": "",
       "active": "󱓻",
     },
-  },
-
-  "hyprland/window": {
-    "format": " 󰖲  {title} ",
-    "separate-outputs": true,
-    "icon": true,
-    "icon-size": 14,
-    "max-length": 40,
   },
 
   "niri/window": {
@@ -91,7 +72,7 @@
   "custom/wallpaper": {
     "format": "",
     "tooltip": false,
-    "on-click": "wpaperctl next",
+    "on-click": "waypaper --backend awww --random",
   },
 
   "custom/notification": {

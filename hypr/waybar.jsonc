@@ -72,10 +72,10 @@
     "on-click": "cliphist list | wofi --dmenu | cliphist decode | wl-copy",
   },
 
-  "custom/wpaperd": {
+  "custom/wallpaper": {
     "format": "",
     "tooltip": false,
-    "on-click": "wpaperctl next",
+    "on-click": "waypaper --backend hyprpaper --random",
   },
 
   "custom/notification": {
