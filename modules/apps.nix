@@ -34,6 +34,10 @@
     cliphist
     nwg-look
     vial
+    slurp
+    mako
+    gtklock
+    pavucontrol
     soteria
     bitwarden-desktop
     waypaper

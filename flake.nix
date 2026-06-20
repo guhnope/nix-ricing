@@ -41,8 +41,6 @@
           ./modules/apps.nix
           ./modules/devices.nix
           ./modules/gaming.nix
-          ./niri/niri.nix
-          ./mango/mango.nix
           ./hypr/hyprland.nix
           ./sway/sway.nix
         ];
