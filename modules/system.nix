@@ -36,4 +36,11 @@
   };
 
   security.polkit.enable = true;
+  security.soteria.enable = true;
+
+  programs.fish = {
+    enable = true;
+    interactiveShellInit = "fastfetch";
+  };
+
 }

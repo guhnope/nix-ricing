@@ -1,6 +1,13 @@
 { pkgs, activeTheme, ... }:
 
 {
+  # 🔓 ALLOW UNFREE PACKAGES
+  nixpkgs.config = {
+    allowUnfree = true;
+    permittedInsecurePackages = [
+      "electron-39.8.10" # For Bitwarden
+    ];
+  };
   environment.systemPackages = with pkgs; [
     neovim
     ghostty
@@ -27,8 +34,8 @@
     cliphist
     nwg-look
     vial
+    soteria
     bitwarden-desktop
-    awww
     waypaper
     (pkgs.lib.hiPrio (
       pkgs.runCommand "launcher-hider-profile" { } ''

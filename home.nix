@@ -34,7 +34,6 @@
         enable = true;
       };
       services.cliphist.enable = true;
-
       # GTK Theme Integration
       gtk = {
         enable = true;
