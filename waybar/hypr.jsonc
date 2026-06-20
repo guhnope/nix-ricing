@@ -53,11 +53,17 @@
     "format": "{name}",
     "on-click": "activate",
     "all-outputs": false,
-    "persistent-workspaces": {},
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+    },
   },
 
   "hyprland/window": {
-    "format": " 󰖲 {title} ",
+    "format": " 󰖲  {title} ",
     "separate-outputs": true,
     "icon": true,
     "icon-size": 14,

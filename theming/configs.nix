@@ -9,8 +9,6 @@
 let
   themes = import ./themes.nix pkgs;
   theme = themes.${activeTheme};
-  waybarEnabled = config.programs.waybar.enable or false;
-  # Checking if sway is enabled to toggle its specific configs safely
   swayEnabled = config.programs.sway.enable or false;
 in
 {
@@ -59,6 +57,12 @@ in
         { "label": "reboot", "action": "systemctl reboot", "text": "Reboot", "keybind": "r" }
       '';
 
+      "waybar/style.css".text = ''
+        * { color: #${theme.fg}; }
+        window#waybar { background: #${theme.bg}; }
+        #workspaces button.active { background: #${theme.accent}; }
+      '';
+
       "wlogout/style.css".text = ''
         window { background-color: rgba(0, 0, 0, 0.5); }
         grid {
@@ -85,17 +89,6 @@ in
         #reboot { background-image: url("${theme.iconPkg}/share/icons/${theme.iconName}/apps/scalable/system-reboot.svg"); }
       '';
     }
-
-    # =====================================================================
-    # 2. Conditional Waybar Integration
-    # =====================================================================
-    (lib.optionalAttrs waybarEnabled {
-      "waybar/style.css".text = ''
-        * { color: #${theme.fg}; }
-        window#waybar { background: #${theme.bg}; }
-        #workspaces button.active { background: #${theme.accent}; }
-      '';
-    })
 
     # =====================================================================
     # 3. Conditional Sway Desktop Ecosystem Tools
