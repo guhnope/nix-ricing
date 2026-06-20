@@ -95,49 +95,16 @@ layouts = [
 # We set standard blank Screens because Waybar runs independently on top of the compositor layer.
 colors = {"bg": "#282828", "fg": "#ebdbb2", "accent": "#83a598", "alt": "#3c3836"}
 
+# 🖥️ SCREEN SETTINGS
+# Empty screens allow external bars (Waybar) to take control of the Layer-Shell
 screens = [
     Screen(
-        top=bar.Bar(
-            [
-                # 🚀 Launcher
-                widget.TextBox(
-                    "  ",
-                    foreground=colors["accent"],
-                    mouse_callbacks={"Button1": lambda: qtile.cmd_spawn(launcher)},
-                ),
-                # 🪟 Window Name
-                widget.WindowName(foreground=colors["fg"], max_chars=40),
-                # 🏷️ Workspaces (The Qtile equivalent of niri/workspaces)
-                widget.GroupBox(
-                    active=colors["accent"],
-                    inactive=colors["alt"],
-                    highlight_method="line",
-                    this_current_screen_border=colors["accent"],
-                    foreground=colors["fg"],
-                    margin_x=5,
-                ),
-                widget.Spacer(),  # Pushes modules to the right
-                # 📥 Tray
-                widget.Systray(padding=10),
-                # ⏱️ Clock
-                widget.Clock(format="%H:%M | %A, %B %d", foreground=colors["accent"]),
-                # 🔊 Volume
-                widget.PulseVolume(foreground=colors["accent"], fmt=" 󰕾 {}"),
-                # ⏻ Power
-                widget.TextBox(
-                    " ⏻ ",
-                    foreground="#fb4934",
-                    mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("wlogout")},
-                ),
-            ],
-            32,  # Height
-            background=colors["bg"],
-            opacity=0.9,
-            margin=[4, 8, 0, 8],  # Gaps (Top, Right, Bottom, Left)
-        ),
+        top=None,
+        bottom=None,
+        left=None,
+        right=None,
     ),
 ]
-
 # 🐭 MOUSE CONTROLS (Super + Left/Right click to drag or resize floating windows)
 mouse = [
     Drag(
@@ -153,12 +120,36 @@ mouse = [
 ]
 
 
-# 🚀 AUTOSTART DAEMONS (Launches Waybar automatically when Qtile initializes)
-# @hook.subscribe.startup_once
-# def autostart():
-#    # Spawns your bar system natively on boot
-#    # If your notifications daemon or authentication agents need manual kicks under Qtile:
-#    subprocess.Popen(["hyprpolkitagent"])
+@hook.subscribe.startup_once
+def autostart():
+    # Kill existing Waybar instance to prevent double-stacking on config reload
+    subprocess.Popen(["pkill", "waybar"])
+    # Launch Waybar
+    subprocess.Popen(["waybar"])
+
+
+# Optional: Ensure Waybar restarts on config reload
+@hook.subscribe.restart
+def restart_waybar():
+    subprocess.Popen(["pkill", "waybar"])
+    subprocess.Popen(["waybar"])
+
+
+@hook.subscribe.setgroup
+@hook.subscribe.group_window_add
+def update_waybar_workspaces(*args):
+    # Get all group names and identify the current active one
+    groups = [g.name for g in qtile.groups]
+    active = qtile.current_group.name
+
+    # Write to a file Waybar can read (e.g., /tmp/qtile-workspaces.txt)
+    # You can format this as simple text or JSON
+    with open("/tmp/qtile-workspaces.txt", "w") as f:
+        f.write(f"{active} | {' '.join(groups)}")
+
+    # Optional: trigger a signal if you want instant updates
+    # subprocess.run(["pkill", "-RTMIN+7", "waybar"])
+    #
 
 
 # 🛠️ WAYLAND COMPOSITOR SETTINGS

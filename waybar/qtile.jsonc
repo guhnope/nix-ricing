@@ -1,0 +1,98 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 36,
+  "spacing": 8,
+
+  "modules-left": ["custom/launcher", "custom/qtile-workspaces"],
+  "modules-center": ["clock"],
+  "modules-right": [
+    "tray",
+    "custom/wallpaper",
+    "custom/screenshot",
+    "custom/cliphist",
+    "custom/notification",
+    "pulseaudio",
+    "network",
+    "custom/power",
+  ],
+
+  "custom/launcher": {
+    "format": "  ",
+    "on-click": "fuzzel",
+    "tooltip": false,
+  },
+
+  "clock": {
+    "format": "{:%H:%M  |  %A, %B %d}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+  },
+
+  "pulseaudio": {
+    "format": "{icon}  {volume}%",
+    "format-muted": "󰝟 Muted",
+    "format-icons": {
+      "default": ["󰕿", "󰖀", "󰕾"],
+    },
+    "on-click": "pavucontrol",
+  },
+
+  "network": {
+    "format-wifi": "   {essid}",
+    "format-ethernet": "󰈀 ",
+    "format-disconnected": "󰖪 ",
+    "tooltip-format": "{ifname} via {gwaddr}",
+  },
+
+  "tray": {
+    "icon-size": 21,
+    "spacing": 10,
+  },
+
+  "custom/qtile-workspaces": {
+    "exec": "cat /tmp/qtile-workspaces.txt",
+    "interval": 1,
+    "return-type": "text",
+  },
+
+  "ext/window": {
+    "format": " 󰖲  {title} ",
+    "max-length": 40,
+  },
+
+  "dwl/window": {
+    "format": "{icon} {title}",
+    "max-length": 50,
+  },
+
+  "custom/cliphist": {
+    "format": " ",
+    "tooltip": false,
+    "on-click": "cliphist list | wofi --dmenu | cliphist decode | wl-copy",
+  },
+
+  "custom/wallpaper": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "waypaper --backend awww --random",
+  },
+
+  "custom/notification": {
+    "format": " ",
+    "tooltip": false,
+    "on-click": "makoctl dismiss",
+  },
+
+  "custom/screenshot": {
+    "format": "  ",
+    "tooltip": false,
+    "on-click": "grimshot savecopy area",
+    "on-click-right": "grimshot savecopy screen",
+  },
+
+  "custom/power": {
+    "format": "⏻  ",
+    "tooltip": false,
+    "on-click": "wlogout --protocol layer-shell --buttons-per-row 4",
+  },
+}
