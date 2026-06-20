@@ -129,7 +129,7 @@ hl.gesture({ fingers = 3, direction = "left", action = "float" })
 -- Keybinds
 ----------------------------------------------------------------
 
--- Core Application Launchers (Wayle / Dotfiles Profile Targets)
+-- Core Application Launchers (Waybar / Dotfiles Profile Targets)
 hl.bind("SUPER + RETURN", hl.dsp.exec_cmd(terminal))
 hl.bind("SUPER + E", hl.dsp.exec_cmd(fileManager))
 hl.bind("SUPER + L", hl.dsp.exec_cmd(lockscreen))
@@ -137,8 +137,12 @@ hl.bind("SUPER + SPACE", hl.dsp.exec_cmd("fuzzel"))
 hl.bind("SUPER + D", hl.dsp.exec_cmd("hyprlauncher"))
 hl.bind("SUPER + W", hl.dsp.exec_cmd("waypaper --backend hyprpaper --random"))
 hl.bind("SUPER + X", hl.dsp.exec_cmd("wlogout --protocol layer-shell --buttons-per-row 4"))
+hl.bind("SUPER + G", hl.dsp.exec_cmd("nwg-look"))
+hl.bind("SUPER + P", hl.dsp.exec_cmd("hyprshot -m window"))
+hl.bind("SUPER + H", hl.dsp.exec_cmd("nixos-help"))
+
+-- Applications
 hl.bind("SUPER + B", hl.dsp.exec_cmd(browser))
-hl.bind("SUPER + G", hl.dsp.exec_cmd("steam"))
 hl.bind("SUPER + S", hl.dsp.exec_cmd("spotify"))
 
 -- Native Hardware Audio Controls
@@ -164,7 +168,6 @@ hl.bind("SUPER + Y", hl.dsp.window.pin())
 hl.bind("SUPER + J", hl.dsp.layout("togglesplit"))
 
 -- Group/Tab Management
-hl.bind("SUPER + K", hl.dsp.group.next())
 hl.bind("SUPER + Tab", hl.dsp.group.prev())
 
 -- Focus Movement

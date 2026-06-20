@@ -25,10 +25,8 @@
     gdk-pixbuf
     nwg-look
     vial
-    slurp
     gtklock
     bitwarden-desktop
-
     (pkgs.lib.hiPrio (
       pkgs.runCommand "launcher-hider-profile" { } ''
         appsDir=$out/share/applications
@@ -40,6 +38,14 @@
         Name=Neovim
         NoDisplay=true
         Exec=nvim %F
+        EOF
+
+        cat <<EOF > $appsDir/nwg-look.desktop
+        [Desktop Entry]
+        Type=Application
+        Name=GTK Settings
+        NoDisplay=true
+        Exec=nwg-look
         EOF
 
         cat <<EOF > $appsDir/caja-file-management-properties.desktop

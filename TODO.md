@@ -9,6 +9,7 @@ MangoWM:
 
 Hyprland:
 - Explore Hyprlauncher options over fuzzel, rofi, etc.
+- Hide uswm login entry (I *refuse* to use it!)
 
 Niri:
 - 2 wallpaper daemon options for workspace and overview wallpapers

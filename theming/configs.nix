@@ -21,7 +21,7 @@ in
       "fuzzel/fuzzel.ini".text = ''
         [main]
         font=JetBrainsMono Nerd Font:size=22
-        lines=20
+        lines=16
         terminal=ghostty
         prompt="❯ "
         icon-theme=${theme.iconName}

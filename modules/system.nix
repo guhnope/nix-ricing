@@ -16,6 +16,20 @@
     nil
     ripgrep
     fastfetch
+    (pkgs.lib.hiPrio (
+      pkgs.runCommand "launcher-hider-profile" { } ''
+        appsDir=$out/share/applications
+        mkdir -p $appsDir
+
+        cat <<EOF > $appsDir/nixos-manual.desktop
+        [Desktop Entry]
+        Type=Application
+        Name=NixOS Manual
+        NoDisplay=true
+        Exec=nixos-help
+        EOF
+      ''
+    ))
   ];
 
   networking.networkmanager.enable = true;
