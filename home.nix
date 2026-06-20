@@ -66,30 +66,30 @@
           "hypr/hyprland.lua".source = ./hypr/hyprland.lua;
           "hypr/hypridle.conf".source = ./hypr/hypridle.conf;
           "hypr/hyprlauncher.conf".source = ./hypr/hyprlauncher.conf;
-          "waybar/hyprland.jsonc".source = ./hypr/waybar.jsonc;
+          "waybar/hyprland.jsonc".source = ./waybar/hypr.jsonc;
         }
         // lib.optionalAttrs (niri) {
           "niri/config.kdl".source = ./niri/config.kdl;
           "niri/niri-portals.conf".source = ./niri/niri-portals.conf;
-          "waybar/niri.jsonc".source = ./niri/waybar.jsonc;
+          "waybar/niri.jsonc".source = ./waybar/niri.jsonc;
         }
         // lib.optionalAttrs (qtile) {
           "qtile/config.py".source = ./qtile/config.py;
         }
         // lib.optionalAttrs (sway) {
           "sway/config".source = ./sway/config;
-          "waybar/sway.jsonc".source = ./sway/waybar.jsonc;
+          "waybar/sway.jsonc".source = ./waybar/sway.jsonc;
         }
         // lib.optionalAttrs osConfig.programs.scroll.enable {
           "scroll/config".source = ./sway/config;
-          "waybar/sway.jsonc".source = ./sway/waybar.jsonc;
+          "waybar/sway.jsonc".source = ./waybar/sway.jsonc;
         }
 
         // lib.optionalAttrs (mango) {
           "mango/config.conf".source = ./mango/config.conf;
           "mango/bind.conf".source = ./mango/bind.conf;
           "mango/rule.conf".source = ./mango/rule.conf;
-          "waybar/mango.jsonc".source = ./mango/waybar.jsonc;
+          "waybar/mango.jsonc".source = ./waybar/mango.jsonc;
         };
 
       programs.waybar = {
