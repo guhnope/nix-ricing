@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  osConfig, # Added osConfig here
   activeTheme ? "gruvbox",
   ...
 }:
@@ -9,14 +10,14 @@
 let
   themes = import ./themes.nix pkgs;
   theme = themes.${activeTheme};
-  swayEnabled = config.programs.sway.enable or false;
-  hyprlandEnabled = config.programs.hyprland.enable or false;
+
+  # Now these variables can successfully read the system state from osConfig
+  hyprlandEnabled = osConfig.programs.hyprland.enable or false;
+  swayEnabled = osConfig.programs.sway.enable or false;
 in
 {
   xdg.configFile = lib.foldr lib.recursiveUpdate { } [
-    # =====================================================================
-    # 1. Core/Static App Configurations (Always Generated)
-    # =====================================================================
+    # 1. Core/Static App Configurations
     {
       "fuzzel/fuzzel.ini".text = ''
         [main]
@@ -90,21 +91,17 @@ in
         #reboot { background-image: url("${theme.iconPkg}/share/icons/${theme.iconName}/apps/scalable/system-reboot.svg"); }
       '';
     }
-    # =====================================================================
-    # 3. Conditional Hyprland Desktop Ecosystem Tools
-    # =====================================================================
+    # 2. Conditional Hyprland Configurations
     (lib.optionalAttrs hyprlandEnabled {
       "hypr/hyprtoolkit.toml".text = ''
         [theme]
-        accent_color = "${theme.primaryColor}"
-        background = "${theme.backgroundColor}"
-        text_color = "${theme.foregroundColor}"
-        font_family = "${theme.fontName}"
+        accent_color = "${theme.accent}"
+        background = "${theme.bg}"
+        text_color = "${theme.fg}"
+        font_family = "JetBrainsMono Nerd Font"
       '';
     })
-    # =====================================================================
-    # 3. Conditional Sway Desktop Ecosystem Tools
-    # =====================================================================
+    # 3. Conditional Sway Configurations
     (lib.optionalAttrs swayEnabled {
       "swaync/config.json".text = builtins.toJSON {
         "$schema" = "/etc/xdg/swaync/configSchema.json";
@@ -122,7 +119,6 @@ in
           "notifications"
         ];
       };
-
       "swaync/style.css".text = ''
         @define-color bg #${theme.bg};
         @define-color accent #${theme.accent};
@@ -130,7 +126,6 @@ in
         .notification { background: @bg; border: 1px solid @accent; }
         .control-center { background: @bg; color: @text; }
       '';
-
       "swaylock/config".text = ''
         color=${theme.bg}
         ring-color=${theme.accent}

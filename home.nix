@@ -9,7 +9,15 @@
 }:
 {
   imports = [
-    ./theming/configs.nix
+    (import ./theming/configs.nix {
+      inherit
+        config
+        lib
+        pkgs
+        osConfig
+        activeTheme
+        ;
+    })
   ];
 
   # Move the 'let' block here, inside the main set
