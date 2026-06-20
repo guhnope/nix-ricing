@@ -82,10 +82,11 @@
           "sway/config".source = ./sway/config;
           "waybar/sway.jsonc".source = ./sway/waybar.jsonc;
         }
-        (lib.optionalAttrs osConfig.programs.scroll.enable {
-          "scroll/config".source = ./configs/sway-config;
+        // lib.optionalAttrs osConfig.programs.scroll.enable {
+          "scroll/config".source = ./sway/config;
           "waybar/sway.jsonc".source = ./sway/waybar.jsonc;
-        })
+        }
+
         // lib.optionalAttrs (mango) {
           "mango/config.conf".source = ./mango/config.conf;
           "mango/bind.conf".source = ./mango/bind.conf;

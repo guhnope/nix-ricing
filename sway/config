@@ -115,4 +115,4 @@ bindsym $mod+Escape      inhibit_shortcuts toggle
 # --- Autostart Sequence ---
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec waybar -c ~/.config/waybar/sway.jsonc
-exec waypaper --random
+exec waypaper --backend awww --random

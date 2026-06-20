@@ -1,5 +1,5 @@
 {
-  description = "NixOS Flake with Noctalia (Hyprland & Niri)";
+  description = "NixOS Flake for multi-compositor testing";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -21,6 +21,8 @@
     inputs@{
       self,
       nixpkgs,
+      scroll,
+      mango,
       home-manager,
       ...
     }:
@@ -30,6 +32,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           home-manager.nixosModules.home-manager
+          inputs.scroll.nixosModules.default
           ./modules/limine.nix
           /etc/nixos/hardware-configuration.nix
           ./configuration.nix
