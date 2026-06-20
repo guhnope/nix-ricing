@@ -13,7 +13,6 @@
       hyprshot
       hypridle
       hyprnotify
-      hyprsysteminfo
       hyprpwcenter
       hyprpicker
       hyprtoolkit
@@ -21,6 +20,20 @@
       hyprlauncher
       hyprpolkitagent # Add the package here
       fuzzel
+      (pkgs.lib.hiPrio (
+        pkgs.runCommand "launcher-hider-profile" { } ''
+          appsDir=$out/share/applications
+          mkdir -p $appsDir
+
+          cat <<EOF > $appsDir/hyprpwcenter.desktop
+          [Desktop Entry]
+          Type=Application
+          Name=Pipewire Control Center
+          NoDisplay=true
+          Exec=hyprpwcenter
+          EOF
+        ''
+      ))
     ];
 
     services.hypridle.enable = true;
