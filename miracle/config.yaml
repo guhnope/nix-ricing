@@ -1,0 +1,81 @@
+# --- Defaults & Global Settings ---
+# Miracle-WM uses standard key constants (e.g., KEY_SPACE, KEY_ENTER)
+# Modifiers: Mod1 (Alt), Mod4 (Super/Logo)
+
+startup_apps:
+  - command: "dms run"
+  - command: "hypridle" # Or switch to wayland-native idle daemon
+
+# --- Monitor Configuration ---
+# Miracle-WM detects outputs dynamically, but you can pin them:
+outputs:
+  - name: DP-2
+    mode: 3440x1440@240Hz
+    scale: 1.0
+
+# --- General Window Management ---
+general:
+  gaps_in: 4
+  gaps_out: 6
+  border_size: 3
+  # Native layouting
+  layout: tiling
+
+decoration:
+  rounding: 4
+  active_opacity: 1.0
+  blur:
+    enabled: true
+    size: 15
+    passes: 2
+
+# --- Keybinds (DMS Integration) ---
+keybindings:
+  # App Launchers
+  - { modifiers: [Mod4], key: KEY_ENTER, command: "ghostty" }
+  - { modifiers: [Mod4], key: KEY_E, command: "nemo" }
+  - {
+      modifiers: [Mod4],
+      key: KEY_SPACE,
+      command: "dms ipc call launcher toggle",
+    }
+  - { modifiers: [Mod4], key: KEY_L, command: "dms ipc call session lock" }
+  - { modifiers: [Mod4], key: KEY_X, command: "dms ipc call session toggle" }
+  - { modifiers: [Mod4], key: KEY_B, command: "brave" }
+  - { modifiers: [Mod4], key: KEY_G, command: "steam" }
+  - { modifiers: [Mod4], key: KEY_S, command: "spotify" }
+
+  # UI / Control Center
+  - {
+      modifiers: [Mod4],
+      key: KEY_C,
+      command: "dms ipc call control-center toggle",
+    }
+  - {
+      modifiers: [Mod4],
+      key: KEY_COMMA,
+      command: "dms ipc call settings toggle",
+    }
+
+  # Volume Controls (DMS handles these via IPC or standard sink commands)
+  - {
+      modifiers: [],
+      key: XF86AudioRaiseVolume,
+      command: "dms ipc call volume up",
+    }
+  - {
+      modifiers: [],
+      key: XF86AudioLowerVolume,
+      command: "dms ipc call volume down",
+    }
+  - { modifiers: [], key: XF86AudioMute, command: "dms ipc call volume mute" }
+
+  # Window Actions
+  - { modifiers: [Mod4], key: KEY_Q, command: "miracle-wm-msg close" }
+  - { modifiers: [Mod4], key: KEY_F, command: "miracle-wm-msg fullscreen" }
+  - { modifiers: [Mod4], key: KEY_V, command: "miracle-wm-msg floating toggle" }
+
+  # Movement (Focus)
+  - { modifiers: [Mod4], key: KEY_LEFT, command: "miracle-wm-msg focus left" }
+  - { modifiers: [Mod4], key: KEY_RIGHT, command: "miracle-wm-msg focus right" }
+  - { modifiers: [Mod4], key: KEY_UP, command: "miracle-wm-msg focus up" }
