@@ -11,7 +11,7 @@ mod = "mod4"
 # 🚀 CORE APPLICATIONS
 terminal = "ghostty"
 launcher = "fuzzel"
-file_manager = "nemo"
+file_manager = "caja"
 wlogout = "wlogout  --protocol layer-shell --buttons-per-row 4"
 
 keys = [
