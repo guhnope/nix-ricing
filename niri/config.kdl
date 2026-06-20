@@ -134,5 +134,5 @@ layer-rule {
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "DISPLAY" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
 // Start the applications
 spawn-sh-at-startup "waybar -c ~/.config/waybar/niri.jsonc"
-spawn-at-startup "wpaperd"
+spawn-at-startup "exec waypaper --backend awww --random"
 config-notification { disable-failed; }
