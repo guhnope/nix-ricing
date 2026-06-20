@@ -22,7 +22,6 @@
       qtile = osConfig.services.xserver.windowManager.qtile.enable or false;
       mango = osConfig.programs.mangowc.enable or false;
       sway = osConfig.programs.sway.enable or false;
-      waybar = osConfig.programs.waybar.enable or false;
     in
     {
       # All your settings go inside this 'in' block
