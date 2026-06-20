@@ -1,7 +1,6 @@
 { pkgs, activeTheme, ... }:
 
 {
-  # 🔓 ALLOW UNFREE PACKAGES
   nixpkgs.config = {
     allowUnfree = true;
     permittedInsecurePackages = [

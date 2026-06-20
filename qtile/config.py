@@ -5,10 +5,8 @@ from libqtile import bar, hook, layout, qtile, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 
-# 🔑 MODIFIER KEY (Super / Windows Key)
 mod = "mod4"
 
-# 🚀 CORE APPLICATIONS
 terminal = "ghostty"
 launcher = "fuzzel"
 file_manager = "caja"
@@ -21,15 +19,15 @@ keys = [
     Key([mod], "Down", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "Up", lazy.layout.up(), desc="Move focus up"),
     # 🔄 MOVING WINDOWS (Super + Shift + Direction)
-    Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window left"),
-    Key([mod, "shift"], "l", lazy.layout.shuffle_right(), desc="Move window right"),
-    Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
-    Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
+    Key([mod, "shift"], "Left", lazy.layout.shuffle_left(), desc="Move window left"),
+    Key([mod, "shift"], "Right", lazy.layout.shuffle_right(), desc="Move window right"),
+    Key([mod, "shift"], "Down", lazy.layout.shuffle_down(), desc="Move window down"),
+    Key([mod, "shift"], "Up", lazy.layout.shuffle_up(), desc="Move window up"),
     # 📏 RESIZING WINDOWS (Super + Control + Direction)
-    Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window left"),
-    Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window right"),
-    Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
-    Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
+    Key([mod, "control"], "Left", lazy.layout.grow_left(), desc="Grow window left"),
+    Key([mod, "control"], "Right", lazy.layout.grow_right(), desc="Grow window right"),
+    Key([mod, "control"], "Down", lazy.layout.grow_down(), desc="Grow window down"),
+    Key([mod, "control"], "Up", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
     # 🏃 APP LAUNCHERS (Matching your system packages)
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch Ghostty"),
@@ -54,6 +52,13 @@ keys = [
 groups = [
     Group("1", label=""),
     Group("2", label=""),
+    Group("3", label=""),
+    Group("4", label=""),
+    Group("5", label=""),
+    Group("6", label=""),
+    Group("7", label=""),
+    Group("8", label=""),
+    Group("9", label=""),
 ]
 for i in groups:
     keys.extend(

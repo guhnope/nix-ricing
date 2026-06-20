@@ -12,15 +12,12 @@ in
     enrollConfig = true;
     panicOnChecksumMismatch = true;
     maxGenerations = 10;
-
-    # Inject your colors here
     extraConfig = ''
       THEME_BACKGROUND=${theme.bg}
       THEME_FOREGROUND=${theme.fg}
       THEME_HIGHLIGHT=${theme.accent}
     '';
   };
-
   boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.loader.efi.canTouchEfiVariables = true;
 }

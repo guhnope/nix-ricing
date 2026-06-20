@@ -52,9 +52,7 @@
   "hyprland/workspaces": {
     "format": "{name}",
     "on-click": "activate",
-    // 🚀 CRITICAL: Make sure this is either false or completely deleted
     "all-outputs": false,
-    // Ensure you aren't hardcoding persistent empty slots like [1, 2, 3, 4] here
     "persistent-workspaces": {},
   },
 
@@ -87,8 +85,8 @@
   "custom/screenshot": {
     "format": "  ",
     "tooltip": false,
-    "on-click": "hyprshot -m region", // Drags a region to copy & save
-    "on-click-right": "hyprshot -m window", // Right-click captures a tile
+    "on-click": "hyprshot -m region",
+    "on-click-right": "hyprshot -m window",
   },
   "custom/power": {
     "format": "⏻  ",

@@ -43,7 +43,6 @@
       extraPortals = with pkgs; [
         xdg-desktop-portal-hyprland
       ];
-      # Apply mkForce here to override the conflict with Niri
       config.common.default = lib.mkForce [ "hyprland" ];
     };
   };

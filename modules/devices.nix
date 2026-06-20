@@ -1,25 +1,22 @@
 { pkgs, ... }:
 
 {
-  # Hardware Graphics Acceleration
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-  };
-
-  services.udev.packages = [ pkgs.vial ];
-  services.gvfs.enable = true;
-  services.udisks2.enable = true;
-
-  # Printer & Scanner Backends
-  services.printing = {
-    enable = true;
-    drivers = [ pkgs.hplipWithPlugin ];
   };
   hardware.sane = {
     enable = true;
     extraBackends = [ pkgs.hplipWithPlugin ];
   };
+  services.printing = {
+    enable = true;
+    drivers = [ pkgs.hplipWithPlugin ];
+  };
+  services.udev.packages = [ pkgs.vial ];
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
+
   environment.systemPackages = with pkgs; [
     vial
     (pkgs.lib.hiPrio (

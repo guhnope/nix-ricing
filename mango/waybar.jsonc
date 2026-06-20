@@ -4,7 +4,6 @@
   "height": 36,
   "spacing": 8,
 
-  // Using 'sway' modules as they are the standard for most Wayland TWMs
   "modules-left": ["custom/launcher", "ext/workspaces"],
   "modules-center": ["clock"],
   "modules-right": [
