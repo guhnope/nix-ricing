@@ -18,7 +18,6 @@
       hyprtoolkit
       hyprshutdown
       hyprlauncher
-      hyprpolkitagent # Add the package here
       fuzzel
       (pkgs.lib.hiPrio (
         pkgs.runCommand "launcher-hider-profile" { } ''

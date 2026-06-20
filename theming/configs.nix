@@ -10,6 +10,7 @@ let
   themes = import ./themes.nix pkgs;
   theme = themes.${activeTheme};
   swayEnabled = config.programs.sway.enable or false;
+  hyprlandEnabled = config.programs.hyprland.enable or false;
 in
 {
   xdg.configFile = lib.foldr lib.recursiveUpdate { } [
@@ -89,7 +90,18 @@ in
         #reboot { background-image: url("${theme.iconPkg}/share/icons/${theme.iconName}/apps/scalable/system-reboot.svg"); }
       '';
     }
-
+    # =====================================================================
+    # 3. Conditional Hyprland Desktop Ecosystem Tools
+    # =====================================================================
+    (lib.optionalAttrs hyprlandEnabled {
+      "hypr/hyprtoolkit.toml".text = ''
+        [theme]
+        accent_color = "${theme.primaryColor}"
+        background = "${theme.backgroundColor}"
+        text_color = "${theme.foregroundColor}"
+        font_family = "${theme.fontName}"
+      '';
+    })
     # =====================================================================
     # 3. Conditional Sway Desktop Ecosystem Tools
     # =====================================================================

@@ -41,8 +41,9 @@
           ./modules/apps.nix
           ./modules/devices.nix
           ./modules/gaming.nix
-          ./hypr/hyprland.nix
-          ./sway/sway.nix
+          ./compositors/common.nix
+          ./compositors/hyprland.nix
+          ./compositors/sway.nix
         ];
       };
     };

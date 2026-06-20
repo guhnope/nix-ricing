@@ -17,29 +17,18 @@
     spotify
     imv
     mpv
-    wlogout
-    matugen
-    grim
     brave
     discord
     signal-desktop
     zed-editor
-    awww
-    waybar
-    fuzzel
-    wl-clipboard
     ffmpegthumbnailer
     gdk-pixbuf
-    cliphist
     nwg-look
     vial
     slurp
-    mako
     gtklock
-    pavucontrol
-    soteria
     bitwarden-desktop
-    waypaper
+
     (pkgs.lib.hiPrio (
       pkgs.runCommand "launcher-hider-profile" { } ''
         appsDir=$out/share/applications

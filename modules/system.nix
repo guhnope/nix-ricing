@@ -2,12 +2,6 @@
 { pkgs, ... }:
 
 {
-  nixpkgs.config = {
-    allowUnfree = true;
-    permittedInsecurePackages = [
-      "electron-39.8.10"
-    ];
-  };
 
   environment.systemPackages = with pkgs; [
     lazygit
@@ -23,6 +17,7 @@
     ripgrep
     fastfetch
   ];
+
   networking.networkmanager.enable = true;
   networking.firewall.checkReversePath = false;
   services.pulseaudio.enable = false;
@@ -36,7 +31,6 @@
   };
 
   security.polkit.enable = true;
-  security.soteria.enable = true;
 
   programs.fish = {
     enable = true;
