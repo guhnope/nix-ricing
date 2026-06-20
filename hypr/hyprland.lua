@@ -28,12 +28,6 @@ local envs = {
     QT_QPA_PLATFORMTHEME         = "qt6ct",
     QT_QPA_PLATFORM              = "wayland",
     ELECTRON_OZONE_PLATFORM_HINT = "auto",
-    XCURSOR_THEME                = "nordic",
-    HYPRCURSOR_SIZE              = "24",
-    HYPRCURSOR_THEME             = "nordic",
-    XCURSOR_SIZE                 = "24",
-    QT_CURSOR_SIZE               = "24",
-    QT_CURSOR_THEME              = "nordic",
 }
 
 for key, val in pairs(envs) do
@@ -55,7 +49,7 @@ hl.config({
         gaps_in = 4,
         gaps_out = 6,
         border_size = 3,
-        layout = "dwindle",
+        layout = "scrolling",
         snap = {
             enabled = true,
             respect_gaps = 1,

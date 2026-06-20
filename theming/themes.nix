@@ -8,14 +8,14 @@ pkgs:
     alt = "89b4fa";
     warn = "f38ba8";
     ghostty = "Catppuccin Mocha";
-    gtkName = "Catppuccin-Mocha-Standard-Lavender-Dark";
+    gtkName = "catppuccin-mocha-mauve-standard";
     gtkPkg = pkgs.catppuccin-gtk.override {
-      accents = [ "lavender" ];
+      accents = [ "mauve" ];
       variant = "mocha";
     };
     iconName = "Papirus-Dark";
     iconPkg = pkgs.papirus-icon-theme;
-    cursorName = "Catppuccin-Mocha-Lavender-Cursors";
+    cursorName = "Catppuccin Mocha Lavender";
     cursorPkg = pkgs.catppuccin-cursors.mochaLavender;
     cursorSize = 24;
   };
@@ -75,10 +75,10 @@ pkgs:
     alt = "cba6f7";
     warn = "f7768e";
     ghostty = "TokyoNight";
-    gtkName = "TokyoNight";
+    gtkName = "Tokyonight-Dark";
     gtkPkg = pkgs.tokyonight-gtk-theme;
-    iconName = "aogami-dark";
-    iconPkg = pkgs.aogami-icon-theme;
+    iconName = "Dracula";
+    iconPkg = pkgs.dracula-icon-theme;
     cursorName = "Bibata-Modern-Classic";
     cursorPkg = pkgs.bibata-cursors;
     cursorSize = 24;
