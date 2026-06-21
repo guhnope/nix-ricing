@@ -16,6 +16,7 @@
     cliphist
     waypaper
     soteria
+    gtklock
     pavucontrol
     slurp
     mako
