@@ -1,4 +1,10 @@
-{ pkgs, activeTheme, ... }:
+{
+  pkgs,
+  config,
+  inputs,
+  activeTheme,
+  ...
+}:
 
 {
   nixpkgs.config = {
@@ -17,7 +23,6 @@
     spotify
     imv
     mpv
-    brave
     discord
     signal-desktop
     zed-editor
@@ -25,7 +30,6 @@
     gdk-pixbuf
     nwg-look
     vial
-    gtklock
     bitwarden-desktop
     (pkgs.lib.hiPrio (
       pkgs.runCommand "launcher-hider-profile" { } ''
@@ -74,6 +78,16 @@
       ''
     ))
   ];
+
+  imports = [ inputs.helium-flake.nixosModules.default ];
+
+  programs.helium = {
+    enable = true;
+    flags = [
+      "--ozone-platform-hint=auto"
+      "--enable-features=UseOzonePlatform"
+    ];
+  };
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono

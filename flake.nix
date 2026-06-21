@@ -11,6 +11,10 @@
       url = "github:Diax170/scroll-flake"; # Community flake
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    helium-flake = {
+      url = "github:oxcl/nix-flake-helium-browser";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
