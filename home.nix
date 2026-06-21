@@ -71,32 +71,36 @@
       xdg.configFile =
         { }
         // lib.optionalAttrs (hyprland) {
-          "hypr/hyprland.lua".source = ./hypr/hyprland.lua;
-          "hypr/hypridle.conf".source = ./hypr/hypridle.conf;
-          "hypr/hyprlauncher.conf".source = ./hypr/hyprlauncher.conf;
+          "hypr/hyprland.lua".source = ./configs/hyprland.lua;
+          "hypr/hypridle.conf".source = ./configs/hypridle.conf;
+          "hypr/hyprlauncher.conf".source = ./configs/hyprlauncher.conf;
           "waybar/hyprland.jsonc".source = ./waybar/hypr.jsonc;
         }
         // lib.optionalAttrs (niri) {
-          "niri/config.kdl".source = ./niri/config.kdl;
-          "niri/niri-portals.conf".source = ./niri/niri-portals.conf;
+          "niri/config.kdl".source = ./configs/niri.kdl;
+          "niri/niri-portals.conf".source = ./configs/niri-portals.conf;
           "waybar/niri.jsonc".source = ./waybar/niri.jsonc;
         }
         // lib.optionalAttrs (qtile) {
-          "qtile/config.py".source = ./qtile/config.py;
+          "qtile/config.py".source = ./configs/qtile.py;
         }
         // lib.optionalAttrs (sway) {
-          "sway/config".source = ./sway/config;
+          "sway/config".source = ./configs/sway-config;
+          "sway/config.json".source = ./configs/sway.json;
           "waybar/sway.jsonc".source = ./waybar/sway.jsonc;
         }
         // lib.optionalAttrs osConfig.programs.scroll.enable {
           "scroll/config".source = ./sway/config;
           "waybar/sway.jsonc".source = ./waybar/sway.jsonc;
         }
-
+        // lib.optionalAttrs osConfig.programs.river.enable {
+          "river/init".source = ./configs/river-init;
+          "waybar/river.jsonc".source = ./waybar/river.jsonc;
+        }
         // lib.optionalAttrs (mango) {
-          "mango/config.conf".source = ./mango/config.conf;
-          "mango/bind.conf".source = ./mango/bind.conf;
-          "mango/rule.conf".source = ./mango/rule.conf;
+          "mango/config.conf".source = ./configs/mangoconfig.conf;
+          "mango/bind.conf".source = ./configs/mangobind.conf;
+          "mango/rule.conf".source = ./configs/mangorule.conf;
           "waybar/mango.jsonc".source = ./waybar/mango.jsonc;
         };
 

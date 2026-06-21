@@ -93,7 +93,7 @@ in
     }
     # 2. Conditional Hyprland Configurations
     (lib.optionalAttrs hyprlandEnabled {
-      "hypr/hyprtoolkit.toml".text = ''
+      "hypr/hyprtoolkit.conf".text = ''
         [theme]
         accent_color = "${theme.accent}"
         background = "${theme.bg}"

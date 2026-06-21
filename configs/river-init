@@ -1,0 +1,92 @@
+#!/usr/bin/env bash
+
+# --- Mod Key ---
+mod="Super"
+
+# --- Core Apps ---
+term="ghostty"
+menu="fuzzel"
+browser="brave"
+files="nemo"
+lock="swaylock"
+
+# --- Layout Setup ---
+# River uses an external layout generator. rivertile is the standard.
+rivertile -view-padding 16 -outer-padding 0 &
+
+# --- Input Configuration ---
+riverctl input type:touchpad tap enabled
+riverctl input type:touchpad natural-scroll enabled
+
+# --- Keybindings ---
+
+# Shell UI
+riverctl map $mod None Space exec $menu
+riverctl map $mod None L exec $lock
+riverctl map $mod None X exec wlogout --buttons-per-row 4
+
+# Core Apps
+riverctl map $mod None Return exec $term
+riverctl map $mod None B exec $browser
+riverctl map $mod None G exec steam
+riverctl map $mod None S exec spotify-launcher
+riverctl map $mod None E exec $files
+
+# Hardware Mappings
+riverctl map None XF86AudioRaiseVolume exec wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+
+riverctl map None XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+riverctl map None XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+riverctl map None XF86MonBrightnessUp exec brightnessctl set +10%
+riverctl map None XF86MonBrightnessDown exec brightnessctl set 10%-
+
+# Window Actions
+riverctl map $mod None Q close
+riverctl map $mod None F toggle-fullscreen
+riverctl map $mod None V toggle-float
+
+# Navigation (Directional)
+riverctl map $mod None Left focus-view left
+riverctl map $mod None Down focus-view down
+riverctl map $mod None Up focus-view up
+riverctl map $mod None Right focus-view right
+
+# Move Views
+riverctl map $mod Shift Left swap left
+riverctl map $mod Shift Down swap down
+riverctl map $mod Shift Up swap up
+riverctl map $mod Shift Right swap right
+
+# Workspace Navigation (Tags)
+# River uses Tags (1-9) instead of Workspaces.
+for i in {1..9}; do
+    tag=$((1 << (i - 1)))
+    riverctl map $mod None $i set-focused-tags $tag
+    riverctl map $mod Shift $i set-view-tags $tag
+done
+
+# Start rivertile (must be in background)
+rivertile -view-padding 16 -outer-padding 0 &
+
+# Set rivertile as the default layout (or swap to it if you have others)
+riverctl default-layout rivertile
+
+# --- Dynamic Layout Controls ---
+
+# Example: Change main ratio
+riverctl map $mod None H send-layout-cmd rivertile "main-ratio -0.05"
+riverctl map $mod None L send-layout-cmd rivertile "main-ratio +0.05"
+
+# Example: Change number of windows in main stack
+riverctl map $mod None I send-layout-cmd rivertile "main-count +1"
+riverctl map $mod None D send-layout-cmd rivertile "main-count -1"
+
+# Example: Toggle layout orientation (Horizontal/Vertical)
+riverctl map $mod None Tab send-layout-cmd rivertile "main-location top"
+riverctl map $mod Shift Tab send-layout-cmd rivertile "main-location left"
+
+# System Exit
+riverctl map $mod Shift E exit
+
+# --- Autostart ---
+waybar -c ~/.config/waybar/river.jsonc &
+waypaper --backend awww --random &

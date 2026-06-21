@@ -1,0 +1,48 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 32,
+  "spacing": 8,
+
+  // 1. Updated modules list
+  "modules-left": ["custom/launcher", "river/tags", "river/window"],
+  "modules-center": ["clock"],
+  "modules-right": [
+    "tray",
+    "custom/wpaperd",
+    "custom/screenshot",
+    "custom/cliphist",
+    "custom/notification",
+    "pulseaudio",
+    "network",
+    "custom/power",
+  ],
+
+  // 2. River Tags Module
+  "river/tags": {
+    "num-tags": 9,
+    "tag-labels": ["1", "2", "3", "4", "5", "6", "7", "8", "9"],
+  },
+
+  // 3. River Window Module
+  "river/window": {
+    "format": " 󰖲 {title} ",
+    "max-length": 40,
+  },
+
+  // ... keep your other modules (launcher, clock, etc) as they were ...
+
+  "custom/launcher": {
+    "format": " 󱗼 ",
+    "on-click": "fuzzel",
+    "tooltip": false,
+  },
+
+  // Note: fixed the name here from custom/wallpaper to custom/wpaperd
+  // to match your modules-right array above
+  "custom/wpaperd": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "wpaperctl next",
+  },
+}

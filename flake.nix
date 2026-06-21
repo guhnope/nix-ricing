@@ -34,16 +34,16 @@
           home-manager.nixosModules.home-manager
           inputs.scroll.nixosModules.default
           ./modules/limine.nix
-          /etc/nixos/hardware-configuration.nix
+          ./hardware-configuration.nix
           ./configuration.nix
           ./modules/system.nix
           ./modules/regreet.nix
           ./modules/apps.nix
           ./modules/devices.nix
           ./modules/gaming.nix
-          ./compositors/common.nix
-          ./compositors/hyprland.nix
-          ./compositors/sway.nix
+          ./modules/wayland.nix
+          ./modules/hyprland.nix
+          ./modules/sway.nix
         ];
       };
     };

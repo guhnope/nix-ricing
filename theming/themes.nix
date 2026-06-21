@@ -83,4 +83,36 @@ pkgs:
     cursorPkg = pkgs.bibata-cursors;
     cursorSize = 24;
   };
+
+  osaka-jade = {
+    bg = "111c18";
+    fg = "f7e8b2";
+    accent = "81b8a8";
+    alt = "72cfa3";
+    warn = "db9f9c";
+    ghostty = "Osaka Jade";
+    gtkName = "Arc-Dark"; # Osaka Jade often pairs well with minimalist dark themes
+    gtkPkg = pkgs.arc-theme;
+    iconName = "Papirus-Dark";
+    iconPkg = pkgs.papirus-icon-theme;
+    cursorName = "Bibata-Modern-Classic";
+    cursorPkg = pkgs.bibata-cursors;
+    cursorSize = 24;
+  };
+
+  solarized-dark = {
+    bg = "002b36";
+    fg = "839496";
+    accent = "268bd2";
+    alt = "859900";
+    warn = "dc322f";
+    ghostty = "Solarized Dark";
+    gtkName = "Solarized-Dark";
+    gtkPkg = pkgs.solarized-gtk-theme;
+    iconName = "Papirus-Dark";
+    iconPkg = pkgs.papirus-icon-theme;
+    cursorName = "Adwaita";
+    cursorPkg = pkgs.adwaita-icon-theme;
+    cursorSize = 24;
+  };
 }
