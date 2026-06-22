@@ -29,18 +29,8 @@ in
       swayimg
       swaylock-effects # Your custom locker choice
       swaynotificationcenter
-      pavucontrol
-      slurp
-      soteria
       swayidle # Added here as a system tool since services.swayidle is HM-only
     ];
 
-    # 4. XDG Desktop Portals
-    xdg.portal = {
-      enable = true;
-      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-      # Use mkDefault so it defers to others if they exist
-      config.common.default = lib.mkDefault [ "gtk" ];
-    };
   };
 }
