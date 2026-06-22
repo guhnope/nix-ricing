@@ -42,6 +42,11 @@
         enable = true;
       };
       services.cliphist.enable = true;
+      services.swayosd = {
+        enable = true;
+        # Optional settings
+        topMargin = 0.9;
+      };
       # GTK Theme Integration
       gtk = {
         enable = true;
@@ -105,6 +110,22 @@
           "waybar/mango.jsonc".source = ./waybar/mango.jsonc;
         };
 
+      systemd.user.services.stasis = {
+        Unit = {
+          Description = "Stasis Wayland idle manager";
+          After = [ "graphical-session.target" ];
+        };
+
+        Service = {
+          # Replace with the actual path to your stasis binary
+          ExecStart = "${pkgs.stasis}/bin/stasis";
+          Restart = "always";
+        };
+
+        Install = {
+          WantedBy = [ "graphical-session.target" ];
+        };
+      };
       programs.waybar = {
         enable = true; # Keep this to install the package
         systemd.enable = false; # This disables the systemd service automatically

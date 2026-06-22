@@ -43,11 +43,10 @@
           ./modules/system.nix
           ./modules/regreet.nix
           ./modules/apps.nix
+          ./modules/networking.nix
           ./modules/devices.nix
           ./modules/gaming.nix
           ./modules/wayland.nix
-          ./modules/hyprland.nix
-          ./modules/sway.nix
         ];
       };
     };

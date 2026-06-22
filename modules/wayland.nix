@@ -1,13 +1,15 @@
 {
   pkgs,
   lib,
+  config,
   activeTheme,
   ...
 }:
+
 {
   environment.systemPackages = with pkgs; [
     wlogout
-    matugen
+    stasis
     grim
     awww
     waybar
@@ -20,6 +22,8 @@
     pavucontrol
     slurp
     mako
+    hyprpicker
+    matugen
     (pkgs.lib.hiPrio (
       pkgs.runCommand "launcher-hider-profile" { } ''
         appsDir=$out/share/applications
@@ -35,12 +39,21 @@
       ''
     ))
   ];
-  environment.etc."xdg/xdg-desktop-portal/portals.conf" = {
-    text = ''
-      [preferred]
-      Hyprland=hyprland;gtk
-      default=generic;gtk
-    '';
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-luminous
+    ];
+    config = {
+      common = {
+        default = [ "gtk" ]; # Fallback for everything else
+        "org.freedesktop.impl.portal.ScreenCast" = [ "luminous" ];
+        "org.freedesktop.impl.portal.Screenshot" = [ "luminous" ];
+        "org.freedesktop.impl.portal.InputCapture" = [ "luminous" ];
+        "org.freedesktop.impl.portal.Settings" = [ "luminous" ];
+        "org.freedesktop.impl.portal.RemoteDesktop" = [ "luminous" ];
+      };
+    };
   };
-
 }

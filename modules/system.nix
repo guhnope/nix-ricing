@@ -31,9 +31,10 @@
       ''
     ))
   ];
-
-  networking.networkmanager.enable = true;
-  networking.firewall.checkReversePath = false;
+  services.scx = {
+    enable = true;
+    scheduler = "scx_lavd";
+  };
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   programs.dconf.enable = true;
@@ -43,7 +44,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-
+  security.pam.services.gtklock = { };
   security.polkit.enable = true;
   security.soteria.enable = true;
 

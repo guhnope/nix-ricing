@@ -80,7 +80,7 @@
   "custom/wallpaper": {
     "format": "",
     "tooltip": false,
-    "on-click": "waypaper --backend hyprpaper --random",
+    "on-click": "waypaper --backend awww --random",
   },
 
   "custom/notification": {
@@ -92,8 +92,8 @@
   "custom/screenshot": {
     "format": "  ",
     "tooltip": false,
-    "on-click": "hyprshot -m region",
-    "on-click-right": "hyprshot -m window",
+    "on-click": "grimshot savecopy area",
+    "on-click-right": "grimshot savecopy screen",
   },
   "custom/power": {
     "format": "⏻  ",

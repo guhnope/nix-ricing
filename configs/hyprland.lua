@@ -4,10 +4,10 @@
 local mod = "SUPER"
 local terminal = "ghostty"
 local fileManager = "nemo"
-local idlehandler = "hypridle"
+local idlehandler = "stasis"
 local browser = "brave"
 local launcher = "fuzzel"
-local lockscreen = "hyprlock"
+local lockscreen = "gtklock"
 
 ----------------------------------------------------------------
 -- Monitor
@@ -134,11 +134,10 @@ hl.bind("SUPER + RETURN", hl.dsp.exec_cmd(terminal))
 hl.bind("SUPER + E", hl.dsp.exec_cmd(fileManager))
 hl.bind("SUPER + L", hl.dsp.exec_cmd(lockscreen))
 hl.bind("SUPER + SPACE", hl.dsp.exec_cmd("fuzzel"))
-hl.bind("SUPER + D", hl.dsp.exec_cmd("hyprlauncher"))
-hl.bind("SUPER + W", hl.dsp.exec_cmd("waypaper --backend hyprpaper --random"))
+hl.bind("SUPER + W", hl.dsp.exec_cmd("waypaper --backend awww --random"))
 hl.bind("SUPER + X", hl.dsp.exec_cmd("wlogout --protocol layer-shell --buttons-per-row 4"))
 hl.bind("SUPER + G", hl.dsp.exec_cmd("nwg-look"))
-hl.bind("SUPER + P", hl.dsp.exec_cmd("hyprshot -m window"))
+hl.bind("SUPER + P", hl.dsp.exec_cmd("grimshot savecopy screen"))
 hl.bind("SUPER + H", hl.dsp.exec_cmd("nixos-help"))
 
 -- Applications
@@ -215,11 +214,8 @@ hl.bind("SUPER + mouse:273", hl.dsp.window.resize(), { mouse = true })
 -- Autostart
 ----------------------------------------------------------------
 hl.on("hyprland.start", function()
-    hl.exec_cmd("dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
+    hl.exec_cmd("dbus-update-activation-environment --systemd --all")
     hl.exec_cmd("waybar -c " .. waybar_config)
-    hl.exec_cmd("exec waypaper --backend hyprpaper --random")
-    hl.exec_cmd("hypridle")
-    hl.exec_cmd("hyprlauncher -d")
+    hl.exec_cmd("exec waypaper --backend awww --random")
     hl.exec_cmd("soteria")
-    hl.exec_cmd("hyprpolkitagent")
 end)
