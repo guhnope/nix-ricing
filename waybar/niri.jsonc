@@ -66,7 +66,7 @@
   "custom/cliphist": {
     "format": " ",
     "tooltip": false,
-    "on-click": "cliphist list | wofi --dmenu | cliphist decode | wl-copy",
+    "on-click": "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy",
   },
 
   "custom/wallpaper": {

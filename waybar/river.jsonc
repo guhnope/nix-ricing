@@ -30,16 +30,18 @@
     "max-length": 40,
   },
 
-  // ... keep your other modules (launcher, clock, etc) as they were ...
-
   "custom/launcher": {
-    "format": " 󱗼 ",
+    "format": "  ", // NixOS / Nerd Font icon
     "on-click": "fuzzel",
     "tooltip": false,
   },
 
-  // Note: fixed the name here from custom/wallpaper to custom/wpaperd
-  // to match your modules-right array above
+  "custom/cliphist": {
+    "format": " ",
+    "tooltip": false,
+    "on-click": "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy",
+  },
+
   "custom/wpaperd": {
     "format": "",
     "tooltip": false,
