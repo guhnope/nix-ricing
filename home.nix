@@ -30,6 +30,7 @@
       qtile = osConfig.services.xserver.windowManager.qtile.enable or false;
       mango = osConfig.programs.mangowc.enable or false;
       sway = osConfig.programs.sway.enable or false;
+      river-classic = osConfig.programs.river.enable or false;
     in
     {
       # All your settings go inside this 'in' block
@@ -93,7 +94,7 @@
           "scroll/config".source = ./sway/config;
           "waybar/sway.jsonc".source = ./waybar/sway.jsonc;
         }
-        // lib.optionalAttrs osConfig.programs.river.enable {
+        // lib.optionalAttrs osConfig.programs.river-classic.enable {
           "river/init".source = ./configs/river-init;
           "waybar/river.jsonc".source = ./waybar/river.jsonc;
         }
