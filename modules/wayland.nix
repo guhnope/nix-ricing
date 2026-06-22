@@ -43,5 +43,4 @@
     '';
   };
 
-  security.soteria.enable = true;
 }
