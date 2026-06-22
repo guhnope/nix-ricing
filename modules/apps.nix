@@ -29,7 +29,6 @@
     ffmpegthumbnailer
     gdk-pixbuf
     nwg-look
-    vial
     bitwarden-desktop
     (pkgs.lib.hiPrio (
       pkgs.runCommand "launcher-hider-profile" { } ''
