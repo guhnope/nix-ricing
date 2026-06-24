@@ -56,4 +56,8 @@
       };
     };
   };
+  services.dbus.packages =
+    lib.optionals config.programs.hyprland.enable [ pkgs.xdg-desktop-portal-hyprland ]
+    ++ lib.optionals config.programs.niri.enable [ pkgs.xwayland-satellite ];
+
 }
