@@ -76,10 +76,10 @@
     "on-click": "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy",
   },
 
-  "custom/wpaperd": {
+  "custom/wallpaper": {
     "format": "",
     "tooltip": false,
-    "on-click": "wpaperctl next",
+    "on-click": "waypaper --backend awww --random",
   },
 
   "custom/notification": {
@@ -91,9 +91,10 @@
   "custom/screenshot": {
     "format": "  ",
     "tooltip": false,
-    "on-click": "hyprshot -m region", // Drags a region to copy & save
-    "on-click-right": "hyprshot -m window", // Right-click captures a tile
+    "on-click": "grimshot savecopy area",
+    "on-click-right": "grimshot savecopy screen",
   },
+
   "custom/power": {
     "format": "⏻  ",
     "tooltip": false,

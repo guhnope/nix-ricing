@@ -82,7 +82,7 @@
   },
 
   "custom/screenshot": {
-    "format": " ",
+    "format": "  ",
     "tooltip": false,
     "on-click": "grimshot savecopy area", // Drags a region to copy & save
     "on-click-right": "grimshot savecopy screen", // Right-click captures whole screen
