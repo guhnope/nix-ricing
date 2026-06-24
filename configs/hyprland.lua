@@ -3,9 +3,9 @@
 ----------------------------------------------------------------
 local mod = "SUPER"
 local terminal = "ghostty"
-local fileManager = "nemo"
+local fileManager = "caja"
 local idlehandler = "stasis"
-local browser = "brave"
+local browser = "helium"
 local launcher = "fuzzel"
 local lockscreen = "gtklock"
 

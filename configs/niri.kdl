@@ -55,10 +55,10 @@ binds {
 
     // Core Applications
     Mod+Return         { spawn "ghostty"; }
-    Mod+B              { spawn "brave"; }
+    Mod+B              { spawn "helium"; }
     Mod+G              { spawn "steam"; }
-    Mod+S              { spawn "spotify-launcher"; }
-    Mod+E              { spawn "nemo"; }
+    Mod+S              { spawn "spotify"; }
+    Mod+E              { spawn "caja"; }
 
     // Hardware Mappings (Standard Linux System Callouts)
     XF86AudioRaiseVolume   { spawn "wpctl" "set-volume" "-l" "1.0" "@DEFAULT_AUDIO_SINK@" "5%+"; }

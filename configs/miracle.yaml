@@ -3,7 +3,7 @@
 # Modifiers: Mod1 (Alt), Mod4 (Super/Logo)
 
 startup_apps:
-  - command: "dms run"
+  - command: "waybar"
   - command: "hypridle" # Or switch to wayland-native idle daemon
 
 # --- Monitor Configuration ---
@@ -33,29 +33,17 @@ decoration:
 keybindings:
   # App Launchers
   - { modifiers: [Mod4], key: KEY_ENTER, command: "ghostty" }
-  - { modifiers: [Mod4], key: KEY_E, command: "nemo" }
+  - { modifiers: [Mod4], key: KEY_E, command: "caja" }
+  - { modifiers: [Mod4], key: KEY_SPACE, command: "fuzzel" }
+  - { modifiers: [Mod4], key: KEY_L, command: "gtklock" }
   - {
       modifiers: [Mod4],
-      key: KEY_SPACE,
-      command: "dms ipc call launcher toggle",
+      key: KEY_X,
+      command: "wlogout --protocol layer-shell --buttons-per-row 4",
     }
-  - { modifiers: [Mod4], key: KEY_L, command: "dms ipc call session lock" }
-  - { modifiers: [Mod4], key: KEY_X, command: "dms ipc call session toggle" }
-  - { modifiers: [Mod4], key: KEY_B, command: "brave" }
+  - { modifiers: [Mod4], key: KEY_B, command: "helium" }
   - { modifiers: [Mod4], key: KEY_G, command: "steam" }
   - { modifiers: [Mod4], key: KEY_S, command: "spotify" }
-
-  # UI / Control Center
-  - {
-      modifiers: [Mod4],
-      key: KEY_C,
-      command: "dms ipc call control-center toggle",
-    }
-  - {
-      modifiers: [Mod4],
-      key: KEY_COMMA,
-      command: "dms ipc call settings toggle",
-    }
 
   # Volume Controls (DMS handles these via IPC or standard sink commands)
   - {
