@@ -12,13 +12,11 @@ Hyprland:
 - Waybar clicking workspaces doesn't work
 
 Niri:
-- Better way to call xwayland
 - 2 wallpaper daemon options for workspace and overview wallpapers
 
 Theming engine:
 - Alternative ways to get GTK themes that dont have Nix packages
 - Matugen!!!!!
-- Cursor theme not being followed
 
 Networking:
 - NordVPN connection management
