@@ -64,7 +64,17 @@
           size = theme.cursorSize;
         };
       };
-
+      home.pointerCursor = {
+        name = theme.cursorName;
+        package = theme.cursorPkg;
+        size = theme.cursorSize;
+        gtk.enable = true;
+        x11.enable = true;
+      };
+      home.sessionVariables = {
+        XCURSOR_THEME = theme.cursorName;
+        XCURSOR_SIZE = "${toString theme.cursorSize}";
+      };
       dconf.settings = {
         "org/gnome/desktop/interface" = {
           color-scheme = "prefer-dark";
@@ -78,13 +88,10 @@
         { }
         // lib.optionalAttrs (hyprland) {
           "hypr/hyprland.lua".source = ./configs/hyprland.lua;
-          "hypr/hypridle.conf".source = ./configs/hypridle.conf;
-          "hypr/hyprlauncher.conf".source = ./configs/hyprlauncher.conf;
           "waybar/hyprland.jsonc".source = ./waybar/hypr.jsonc;
         }
         // lib.optionalAttrs (niri) {
           "niri/config.kdl".source = ./configs/niri.kdl;
-          "niri/niri-portals.conf".source = ./configs/niri-portals.conf;
           "waybar/niri.jsonc".source = ./waybar/niri.jsonc;
         }
         // lib.optionalAttrs (qtile) {
