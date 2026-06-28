@@ -20,6 +20,7 @@
     soteria
     gtklock
     pavucontrol
+    sway-contrib.grimshot
     slurp
     mako
     hyprpicker
