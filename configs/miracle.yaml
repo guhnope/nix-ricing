@@ -4,7 +4,6 @@
 
 startup_apps:
   - command: "waybar"
-  - command: "hypridle" # Or switch to wayland-native idle daemon
 
 # --- Monitor Configuration ---
 # Miracle-WM detects outputs dynamically, but you can pin them:
