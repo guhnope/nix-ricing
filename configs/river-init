@@ -6,9 +6,9 @@ mod="Super"
 # --- Core Apps ---
 term="ghostty"
 menu="fuzzel"
-browser="brave"
-files="nemo"
-lock="swaylock"
+browser="helium"
+files="caja"
+lock="gtklock"
 
 # --- Layout Setup ---
 # River uses an external layout generator. rivertile is the standard.
