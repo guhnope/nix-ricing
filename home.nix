@@ -107,7 +107,10 @@
           "waybar/sway.jsonc".source = ./waybar/sway.jsonc;
         }
         // lib.optionalAttrs osConfig.programs.river-classic.enable {
-          "river/init".source = ./configs/river-init;
+          "river/init" = {
+            source = ./configs/river-init;
+            executable = true;
+          };
           "waybar/river.jsonc".source = ./waybar/river.jsonc;
         }
         // lib.optionalAttrs (mango) {
