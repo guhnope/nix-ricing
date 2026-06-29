@@ -1,12 +1,10 @@
 { pkgs, ... }:
 
 {
-  # 1. Core Network Stack
   networking = {
     hostName = "nixos";
     networkmanager = {
       enable = true;
-      # Declarative VPN profiles for quick switching
       ensureProfiles.profiles = {
         "Nord-Brisbane" = {
           connection = {
@@ -40,15 +38,12 @@
         };
       };
     };
-
     firewall = {
       enable = true;
       checkReversePath = "loose";
       allowedUDPPorts = [ 51820 ];
     };
   };
-
-  # 2. Networking Tools
   environment.systemPackages = with pkgs; [
     wireguard-tools
     networkmanager
