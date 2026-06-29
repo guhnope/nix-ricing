@@ -3,12 +3,16 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     mango = {
       url = "github:mangowm/mango";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     scroll = {
-      url = "github:Diax170/scroll-flake"; # Community flake
+      url = "github:Diax170/scroll-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     helium-flake = {
@@ -20,23 +24,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-
   outputs =
-    inputs@{
-      self,
-      nixpkgs,
-      scroll,
-      mango,
-      home-manager,
-      ...
-    }:
+    { self, nixpkgs, ... }@inputs:
     {
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
-          home-manager.nixosModules.home-manager
-          inputs.scroll.nixosModules.default
           ./modules/limine.nix
           ./hardware-configuration.nix
           ./configuration.nix
