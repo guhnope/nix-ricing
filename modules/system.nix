@@ -2,11 +2,12 @@
 { pkgs, ... }:
 
 {
-
   environment.systemPackages = with pkgs; [
     lazygit
     git
     curl
+    sops
+    age
     wget
     wgnord
     unzip
@@ -47,10 +48,8 @@
   security.pam.services.gtklock = { };
   security.polkit.enable = true;
   security.soteria.enable = true;
-
   programs.fish = {
     enable = true;
     interactiveShellInit = "fastfetch";
   };
-
 }

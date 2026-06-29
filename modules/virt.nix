@@ -17,8 +17,6 @@
     enable = true;
     qemu.swtpm.enable = true; # Needed for TPM (Windows 11)
   };
-  services.dbus.packages = [ pkgs.gnome-boxes ];
-  services.udev.packages = [ pkgs.libvirt ];
   security.polkit.extraConfig = ''
     polkit.addRule(function(action, subject) {
       if (action.id == "org.libvirt.unix.manage" && subject.user == "${username}) {

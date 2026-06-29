@@ -20,7 +20,6 @@
     })
   ];
 
-  # Move the 'let' block here, inside the main set
   config =
     let
       themes = import ./theming/themes.nix pkgs;
@@ -33,7 +32,6 @@
       river-classic = osConfig.programs.river.enable or false;
     in
     {
-      # All your settings go inside this 'in' block
       home.username = username;
       home.homeDirectory = "/home/${username}";
       home.stateVersion = "26.05";
@@ -41,13 +39,17 @@
       programs.fastfetch = {
         enable = true;
       };
+      sops = {
+        age.sshKeyPaths = [
+          "/home/${username}/.ssh/id_ed25519"
+          "/etc/ssh/ssh_host_ed25519_key"
+        ];
+      };
       services.cliphist.enable = true;
       services.swayosd = {
         enable = true;
-        # Optional settings
         topMargin = 0.9;
       };
-      # GTK Theme Integration
       gtk = {
         enable = true;
         theme = {
@@ -74,6 +76,7 @@
       home.sessionVariables = {
         XCURSOR_THEME = theme.cursorName;
         XCURSOR_SIZE = "${toString theme.cursorSize}";
+        MY_SECRETS_PATH = "/home/${config.home.username}/.local/share/secrets/config.env";
       };
       dconf.settings = {
         "org/gnome/desktop/interface" = {
@@ -127,7 +130,6 @@
         };
 
         Service = {
-          # Replace with the actual path to your stasis binary
           ExecStart = "${pkgs.stasis}/bin/stasis";
           Restart = "always";
         };
@@ -137,15 +139,15 @@
         };
       };
       programs.waybar = {
-        enable = true; # Keep this to install the package
-        systemd.enable = false; # This disables the systemd service automatically
+        enable = true;
+        systemd.enable = false;
       };
       systemd.user.services.waybar = {
         Service = {
           ExecStart = "/bin/false";
         };
         Install = {
-          WantedBy = [ ]; # Remove it from startup targets
+          WantedBy = [ ];
         };
       };
     };
