@@ -1,5 +1,0 @@
-creation_rules:
-  - path_regex: secrets\.yaml$
-    key_groups:
-      - pgp:
-          - "${SOPS_KEY_PUBLIC}"

@@ -12,6 +12,3 @@ Theming engine:
 
 Networking:
 - NordVPN connection management
-
-Security:
-- Replace keyring with something more modern

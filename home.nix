@@ -39,12 +39,9 @@
       programs.fastfetch = {
         enable = true;
       };
-      sops = {
-        age.sshKeyPaths = [
-          "/home/${username}/.ssh/id_ed25519"
-          "/etc/ssh/ssh_host_ed25519_key"
-        ];
-      };
+      home.packages = with pkgs; [
+        keepassxc
+      ];
       services.cliphist.enable = true;
       services.swayosd = {
         enable = true;
@@ -70,13 +67,13 @@
         name = theme.cursorName;
         package = theme.cursorPkg;
         size = theme.cursorSize;
+
         gtk.enable = true;
         x11.enable = true;
       };
       home.sessionVariables = {
         XCURSOR_THEME = theme.cursorName;
         XCURSOR_SIZE = "${toString theme.cursorSize}";
-        MY_SECRETS_PATH = "/home/${config.home.username}/.local/share/secrets/config.env";
       };
       dconf.settings = {
         "org/gnome/desktop/interface" = {

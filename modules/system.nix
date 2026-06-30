@@ -6,8 +6,6 @@
     lazygit
     git
     curl
-    sops
-    age
     wget
     wgnord
     unzip
@@ -37,6 +35,7 @@
     scheduler = "scx_lavd";
   };
   services.pulseaudio.enable = false;
+  services.gnome.gnome-keyring.enable = false;
   security.rtkit.enable = true;
   programs.dconf.enable = true;
   services.pipewire = {
@@ -48,6 +47,7 @@
   security.pam.services.gtklock = { };
   security.polkit.enable = true;
   security.soteria.enable = true;
+
   programs.fish = {
     enable = true;
     interactiveShellInit = "fastfetch";
