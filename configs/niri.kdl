@@ -122,7 +122,14 @@ layer-rule {
     place-within-backdrop true
 }
 
+layer-rule {
+    match namespace="swaybg"
+    place-within-backdrop true
+}
+
+
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "DISPLAY" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
 spawn-sh-at-startup "waybar -c ~/.config/waybar/niri.jsonc"
 spawn-sh-at-startup "waypaper --backend awww --random"
+spawn-sh-at-startup "waypaper --backend swaybg --random"
 config-notification { disable-failed; }

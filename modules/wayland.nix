@@ -12,6 +12,7 @@
     stasis
     grim
     awww
+    swaybg
     waybar
     fuzzel
     wl-clipboard
@@ -20,7 +21,8 @@
     soteria
     gtklock
     pavucontrol
-    sway-contrib.grimshot
+    ironbar
+    wayshot
     slurp
     mako
     hyprpicker
