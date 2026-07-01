@@ -84,41 +84,42 @@
         };
       };
 
-      xdg.configFile =
-        { }
-        // lib.optionalAttrs (hyprland) {
-          "hypr/hyprland.lua".source = ./configs/hyprland.lua;
-          "waybar/hyprland.jsonc".source = ./waybar/hypr.jsonc;
-        }
-        // lib.optionalAttrs (niri) {
-          "niri/config.kdl".source = ./configs/niri.kdl;
-          "waybar/niri.jsonc".source = ./waybar/niri.jsonc;
-        }
-        // lib.optionalAttrs (qtile) {
-          "qtile/config.py".source = ./configs/qtile.py;
-        }
-        // lib.optionalAttrs (sway) {
-          "sway/config".source = ./configs/sway-config;
-          "sway/config.json".source = ./configs/sway.json;
-          "waybar/sway.jsonc".source = ./waybar/sway.jsonc;
-        }
-        // lib.optionalAttrs osConfig.programs.scroll.enable {
-          "scroll/config".source = ./sway/config;
-          "waybar/sway.jsonc".source = ./waybar/sway.jsonc;
-        }
-        // lib.optionalAttrs osConfig.programs.river-classic.enable {
-          "river/init" = {
-            source = ./configs/river-init;
-            executable = true;
-          };
-          "waybar/river.jsonc".source = ./waybar/river.jsonc;
-        }
-        // lib.optionalAttrs (mango) {
-          "mango/config.conf".source = ./configs/mangoconfig.conf;
-          "mango/bind.conf".source = ./configs/mangobind.conf;
-          "mango/rule.conf".source = ./configs/mangorule.conf;
-          "waybar/mango.jsonc".source = ./waybar/mango.jsonc;
+      xdg.configFile = {
+        "ironbar/config.toml".source = ./configs/ironbar.toml;
+      }
+      // lib.optionalAttrs (hyprland) {
+        "hypr/hyprland.lua".source = ./configs/hyprland.lua;
+        "waybar/hyprland.jsonc".source = ./waybar/hypr.jsonc;
+      }
+      // lib.optionalAttrs (niri) {
+        "niri/config.kdl".source = ./configs/niri.kdl;
+        "waybar/niri.jsonc".source = ./waybar/niri.jsonc;
+      }
+      // lib.optionalAttrs (qtile) {
+        "qtile/config.py".source = ./configs/qtile.py;
+      }
+      // lib.optionalAttrs (sway) {
+        "sway/config".source = ./configs/sway-config;
+        "sway/config.json".source = ./configs/sway.json;
+        "waybar/sway.jsonc".source = ./waybar/sway.jsonc;
+      }
+      // lib.optionalAttrs osConfig.programs.scroll.enable {
+        "scroll/config".source = ./sway/config;
+        "waybar/sway.jsonc".source = ./waybar/sway.jsonc;
+      }
+      // lib.optionalAttrs osConfig.programs.river-classic.enable {
+        "river/init" = {
+          source = ./configs/river-init;
+          executable = true;
         };
+        "waybar/river.jsonc".source = ./waybar/river.jsonc;
+      }
+      // lib.optionalAttrs (mango) {
+        "mango/config.conf".source = ./configs/mangoconfig.conf;
+        "mango/bind.conf".source = ./configs/mangobind.conf;
+        "mango/rule.conf".source = ./configs/mangorule.conf;
+        "waybar/mango.jsonc".source = ./waybar/mango.jsonc;
+      };
 
       systemd.user.services.stasis = {
         Unit = {

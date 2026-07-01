@@ -1,0 +1,21 @@
+# General settings
+position = "top"
+height = 32
+spacing = 16
+
+# Use '=' for sequences, not '[start]' table headers
+start = [
+    { type = "script", name = "launcher", cmd = "echo ''", on_click_left = "fuzzel" },
+    { type = "workspaces", format = "{label}" }
+]
+center = [
+    { type = "clock", format = "%H:%M  |  %A, %B %d" }
+]
+end = [
+    { type = "tray", icon_size = 21 },
+    { type = "script", name = "wallpaper", cmd = "echo ''", on_click_left = "waypaper --backend awww --random" },
+    { type = "script", name = "screenshot", cmd = "echo '  '", on_click_left = "grimshot savecopy area", on_click_right = "grimshot savecopy screen" },
+    { type = "script", name = "notification", cmd = "echo ' '", on_click_left = "makoctl dismiss" },
+    { type = "volume", format = "{icon}  {percentage}%", on_click_left = "pavucontrol" },
+    { type = "script", name = "power", cmd = "echo '⏻  '", on_click_left = "wlogout --protocol layer-shell --buttons-per-row 4" }
+]

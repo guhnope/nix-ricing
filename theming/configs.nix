@@ -59,6 +59,37 @@ in
         { "label": "reboot", "action": "systemctl reboot", "text": "Reboot", "keybind": "r" }
       '';
 
+      "ironbar/style.css".text = ''
+        /* Using your theme regime variables */
+        window {
+          background-color: #${theme.bg};
+          color: #${theme.fg};
+        }
+        .module {
+          color: #${theme.accent};
+        }
+        .module {
+            padding: 0 10px; /* 10px padding on left/right of every module */
+            margin: 4px 2px; /* Small gap between module containers */
+            border-radius: 6px;
+        }
+
+        /* Specific spacing for the tray to keep icons from touching */
+        .tray {
+            padding: 0 15px;
+        }
+
+        /* Add a bit of space around the clock */
+        .clock {
+            padding: 0 20px;
+        }
+
+        /* Ensure scripts don't feel squashed */
+        .script {
+            padding: 0 8px;
+        }
+      '';
+
       "waybar/style.css".text = ''
         * { color: #${theme.fg}; }
         window#waybar { background: #${theme.bg}; }
