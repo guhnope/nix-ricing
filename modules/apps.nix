@@ -29,6 +29,7 @@
     ffmpegthumbnailer
     gdk-pixbuf
     nwg-look
+    popsicle
     bitwarden-desktop
     (pkgs.lib.hiPrio (
       pkgs.runCommand "launcher-hider-profile" { } ''

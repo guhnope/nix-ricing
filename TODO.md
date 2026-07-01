@@ -7,7 +7,6 @@ MangoWM:
 Theming engine:
 - Alternative ways to get GTK themes that dont have Nix packages
 - Rethink wlogout icons to survive theme changes
-- Replace waybar with ironbar
 - Matugen!!!!!
 
 Networking:
